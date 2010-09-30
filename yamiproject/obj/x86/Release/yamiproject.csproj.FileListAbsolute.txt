@@ -1,0 +1,9 @@
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\images\welcome.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\images\select.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\images\welcome.png
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\yamiproject.exe
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\yamiproject.pdb
+E:\yami.net.pl\yamiproject\yamiproject\obj\x86\Release\ResolveAssemblyReference.cache
+E:\yami.net.pl\yamiproject\yamiproject\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\yami.net.pl\yamiproject\yamiproject\obj\x86\Release\yamiproject.exe
+E:\yami.net.pl\yamiproject\yamiproject\obj\x86\Release\yamiproject.pdb

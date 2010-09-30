@@ -1,0 +1,13 @@
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\yamiproject.exe
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\yamiproject.pdb
+E:\yami.net.pl\yamiproject\yamiproject\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\yami.net.pl\yamiproject\yamiproject\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\yami.net.pl\yamiproject\yamiproject\obj\x86\Debug\yamiproject.exe
+E:\yami.net.pl\yamiproject\yamiproject\obj\x86\Debug\yamiproject.pdb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\welcome.png
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\welcome.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\select.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\fonts\font2.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\fonts\font.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\mariohud.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Game.ico

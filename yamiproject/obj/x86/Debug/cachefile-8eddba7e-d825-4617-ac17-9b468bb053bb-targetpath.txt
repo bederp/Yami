@@ -1,0 +1,6 @@
+Content\images\welcome.xnb
+Content\images\select.xnb
+Content\fonts\font.xnb
+Content\fonts\font2.xnb
+Content\images\mariohud.xnb
+Content\images\welcome.png
