@@ -58,24 +58,26 @@ namespace yamiproject
 
         public void Draw(GameTime time)
         {
-            Vector2 scale = new Vector2(Globals.scale.X, Globals.scale.Y);
-            batch.Draw(welcome, Vector2.Zero*scale, null, Color.White,
-                0f, Vector2.Zero, scale, 
+
+            batch.Begin();
+            batch.Draw(welcome, Vector2.Zero * Globals.scale, null, Color.White,
+                0f, Vector2.Zero, Globals.scale, 
                 SpriteEffects.None, 0f );
-            batch.Draw(select, select_positions[select_choice]*scale, null, Color.White,
-                0f, Vector2.Zero, scale,
+            batch.Draw(select, select_positions[select_choice] * Globals.scale, null, Color.White,
+                0f, Vector2.Zero, Globals.scale,
                 SpriteEffects.None, 0f);
 
             for (int i = 0; i < 3; i++ )
             {
-                batch.DrawString(font, hud[i], hud_positions[i] * scale,
+                batch.DrawString(font, hud[i], hud_positions[i] * Globals.scale,
                     Color.White, 0, Vector2.Zero,
-                    scale, SpriteEffects.None, 0f);
+                    Globals.scale, SpriteEffects.None, 0f);
             }
 
-            batch.DrawString(font, String.Format("{0:000000.}", top), top_position * scale,
+            batch.DrawString(font, String.Format("{0:000000.}", top), top_position * Globals.scale,
                     Color.White, 0, Vector2.Zero,
-                    scale, SpriteEffects.None, 0f);
+                    Globals.scale, SpriteEffects.None, 0f);
+            batch.End();
 
         }
 

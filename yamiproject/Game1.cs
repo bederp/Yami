@@ -94,9 +94,7 @@ namespace yamiproject
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin();
             gamestate.Draw(gameTime);
-            spriteBatch.End();
             base.Draw(gameTime);
         }
 

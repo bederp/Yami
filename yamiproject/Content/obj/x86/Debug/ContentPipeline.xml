@@ -46,6 +46,51 @@
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\mariohud.xnb</Output>
       <Time>2010-09-30T17:15:50.380132+02:00</Time>
     </Item>
+    <Item>
+      <Source>images\111.png</Source>
+      <Name>images\111</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\111.xnb</Output>
+      <Time>2010-10-03T00:03:11.2102126+02:00</Time>
+    </Item>
+    <Item>
+      <Source>images\112.png</Source>
+      <Name>images\112</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\112.xnb</Output>
+      <Time>2010-10-02T23:59:41.4342141+02:00</Time>
+    </Item>
+    <Item>
+      <Source>images\flag.png</Source>
+      <Name>images\flag</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\flag.xnb</Output>
+      <Time>2010-10-02T23:51:11.0230203+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\coin1.png</Source>
+      <Name>sprites\coin1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\coin1.xnb</Output>
+      <Time>2010-09-30T17:38:49.2169969+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\mario1.png</Source>
+      <Name>sprites\mario1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\mario1.xnb</Output>
+      <Time>2010-10-03T18:07:26.8190465+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

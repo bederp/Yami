@@ -5,12 +5,15 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
+using System.Threading;
 
 namespace yamiproject
 {
     class Gamestate
     {
         Intro intro;
+        Level level;
+        int passedtime = 0;
         ContentManager manager;
         SpriteBatch batch;
         GraphicsDevice graphics;
@@ -24,14 +27,15 @@ namespace yamiproject
         int coins = 0;
         int lives = 1;
         int[] world = { 1, 1 };
-        int time = 400;
+        int mariotime = 400;
 
         enum State
         {
             intro,
             demo,
             info,
-            game
+            level,
+            black
         }
 
         State state;
@@ -46,9 +50,10 @@ namespace yamiproject
             intro = new Intro(batch, manager);
             state = State.intro;
             intro.oninfo += new EventHandler(intro_oninfo);
-            
+            level = new Level(batch, manager, "images/111", "images/112");
 
         }
+
 
         public void Update(GameTime time)
         {
@@ -59,10 +64,10 @@ namespace yamiproject
                     intro.Update(time);
                     break;
                 case State.info:
-
+                    InfoUpdate(time);
                     break;
-                case State.game:
-
+                case State.level:
+                    level.Update(time);
                     break;
                 case State.demo:
 
@@ -80,10 +85,10 @@ namespace yamiproject
                     intro.Draw(time);
                     break;
                 case State.info:
-                    InfoDraw();
+                    InfoDraw(time);
                     break;
-                case State.game:
-
+                case State.level:
+                    level.Draw(time);
                     break;
                 case State.demo:
 
@@ -93,8 +98,20 @@ namespace yamiproject
 
         }
 
-        private void InfoDraw()
+        private void InfoUpdate(GameTime time)
         {
+            passedtime += time.ElapsedGameTime.Milliseconds;
+            Console.WriteLine("game time = " +passedtime);
+            if (passedtime >= 0 ) //2000
+            {
+                passedtime = 0;
+                state = State.level;
+            }
+        }
+
+        private void InfoDraw(GameTime time)
+        {
+            batch.Begin();
             graphics.Clear(Color.Black);
             Texture2D mario_hud = manager.Load<Texture2D>("images/mariohud");
 
@@ -111,13 +128,14 @@ namespace yamiproject
             batch.DrawString(font, tmp, new Vector2(122, 104) * scale,
                     Color.White, 0, Vector2.Zero,
                     scale, SpriteEffects.None, 0f);
+            batch.End();
 
         }
 
         private void GamestateDraw(GameTime time)
         {
-            
-            
+
+            batch.Begin();
             for (int i = 0; i < 3; i++)
             {
                 batch.DrawString(font, hud[i], hud_positions[i] * scale,
@@ -138,11 +156,29 @@ namespace yamiproject
             batch.DrawString(font, tmp, hud_positions[5] * scale,
                     Color.White, 0, Vector2.Zero,
                     scale, SpriteEffects.None, 0f);
-            
-            if(state == State.game) 
-                batch.DrawString(font, String.Format("{0:000000.}", time), hud_positions[6] * scale,
+
+            if (state == State.level)
+            {
+                passedtime += time.ElapsedGameTime.Milliseconds;
+                if (mariotime <= 100)
+                {
+                    if (passedtime >= 250)
+                    {
+                        passedtime = 0;
+                        mariotime--;
+                    }
+                }
+                else if (passedtime >= 500)
+                {
+                    passedtime = 0;
+                    mariotime--;
+                }
+
+                batch.DrawString(font, String.Format("{0:000.}", mariotime), hud_positions[6] * scale,
                         Color.White, 0, Vector2.Zero,
                         scale, SpriteEffects.None, 0f);
+            }
+            batch.End();
         }
 
         void intro_oninfo(object sender, EventArgs e)

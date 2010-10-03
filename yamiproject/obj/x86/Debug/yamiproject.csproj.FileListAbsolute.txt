@@ -11,3 +11,8 @@ E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\fonts\font2.xnb
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\fonts\font.xnb
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\mariohud.xnb
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Game.ico
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\111.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\112.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\flag.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\coin1.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\mario1.xnb
