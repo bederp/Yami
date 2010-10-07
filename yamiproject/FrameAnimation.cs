@@ -7,7 +7,7 @@ namespace yamiproject
     {
         Rectangle[] frames;
         int currentframe = 0;
-        float framelength = .5f;
+        float framelength = .1f;
         float timer = 0;
 
         public int FramesPerSecond

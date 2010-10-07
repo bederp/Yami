@@ -1,0 +1,12 @@
+[START]
+40 40
+
+[SOUNDS]
+
+[BACKGROUND]
+bg2
+
+[COLISSION]
+col2.txt
+
+[OBJECTS]

@@ -7,15 +7,25 @@ using Microsoft.Xna.Framework;
 namespace yamiproject
 {
    public class Globals
-    {
+   {
 
-       public static Vector2 mario_res = new Vector2(256, 224);
-       public static Vector2 scale = new Vector2(1, 1);
+       public static Point mario_res = new Point(256, 224);
+       public static Point title = new Point(16, 16);
+       public static int yscanlineoffset = 8;
+       public static int scale = 3;
 
-       public static Vector2 Scale
-        {
+       public static int Scale
+       {
             get { return scale; }
-            set { scale = value; }
-        }
-    }
+            set 
+            {
+                if (value > 3)
+                    scale = 3;
+                else if (value < 1)
+                    scale = 1;
+                else
+                    scale = value;
+            }
+       }
+   }
 }

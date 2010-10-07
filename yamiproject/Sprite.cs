@@ -13,7 +13,7 @@ namespace yamiproject
         public Dictionary<string, FrameAnimation> animations =
             new Dictionary<string, FrameAnimation>();
         string currentanimation = null;
-        public Vector2 position = Vector2.Zero;
+        public Point position = Point.Zero;
         bool animating = true;
         Texture2D texture;
         SpriteBatch batch;
@@ -69,10 +69,10 @@ namespace yamiproject
             if (animation != null)
             {
                 Rectangle tmp = new Rectangle(
-                    (int)position.X*(int)Globals.Scale.X,
-                    (int)position.Y * (int)Globals.Scale.Y,
-                    animation.CurrentRect.Width * (int)Globals.Scale.X,
-                    animation.CurrentRect.Height * (int)Globals.Scale.Y);
+                    (int)position.X,
+                    (int)position.Y,
+                    animation.CurrentRect.Width,
+                    animation.CurrentRect.Height);
 
                 batch.Draw(texture,
                     tmp,

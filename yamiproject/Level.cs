@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System.IO;
 
 namespace yamiproject
 {
@@ -14,14 +15,30 @@ namespace yamiproject
         int currentmap;
         List<Map> maps;
 
-        public Level(SpriteBatch batch, ContentManager manager, params string[] maps)
+        public Level(SpriteBatch batch, ContentManager manager, string world)
         {
             currentmap = 0;
             this.maps = new List<Map>();
-            foreach (string s in maps)
+            bool readingmaps = false;
+
+            using (StreamReader reader = new StreamReader("Content/worlds/"+world+"/def.txt"))
             {
-                Map tmp = new Map(batch, manager, s);
-                this.maps.Add(tmp);
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine().Trim();
+
+                    if (string.IsNullOrEmpty(line))
+                        continue;
+
+                    if (line.Contains("[MAPS]"))
+                        readingmaps = true;
+                    else if (readingmaps)
+                    {
+                        Map tmp = new Map(batch, manager, world, line);
+                        maps.Add(tmp);
+                    }
+
+                }
             }
         }
 

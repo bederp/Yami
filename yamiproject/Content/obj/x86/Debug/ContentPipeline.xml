@@ -2,24 +2,6 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>images\welcome.png</Source>
-      <Name>images\welcome</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\welcome.xnb</Output>
-      <Time>2010-09-30T16:14:40.3872204+02:00</Time>
-    </Item>
-    <Item>
-      <Source>images\select.png</Source>
-      <Name>images\select</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\select.xnb</Output>
-      <Time>2010-09-30T10:05:48.8263675+02:00</Time>
-    </Item>
-    <Item>
       <Source>fonts\font.spritefont</Source>
       <Name>fonts\font</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -38,6 +20,42 @@
       <Time>2010-09-30T13:59:04.7118864+02:00</Time>
     </Item>
     <Item>
+      <Source>sprites\coin1.png</Source>
+      <Name>sprites\coin1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\coin1.xnb</Output>
+      <Time>2010-09-30T17:38:49.2169969+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\marios.png</Source>
+      <Name>sprites\marios</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\marios.xnb</Output>
+      <Time>2010-10-07T18:36:31.3734709+02:00</Time>
+    </Item>
+    <Item>
+      <Source>images\welcome.png</Source>
+      <Name>images\welcome</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\welcome.xnb</Output>
+      <Time>2010-09-30T16:14:40.3872204+02:00</Time>
+    </Item>
+    <Item>
+      <Source>images\select.png</Source>
+      <Name>images\select</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\select.xnb</Output>
+      <Time>2010-09-30T10:05:48.8263675+02:00</Time>
+    </Item>
+    <Item>
       <Source>images\mariohud.png</Source>
       <Name>images\mariohud</Name>
       <Importer>TextureImporter</Importer>
@@ -45,24 +63,6 @@
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\mariohud.xnb</Output>
       <Time>2010-09-30T17:15:50.380132+02:00</Time>
-    </Item>
-    <Item>
-      <Source>images\111.png</Source>
-      <Name>images\111</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\111.xnb</Output>
-      <Time>2010-10-03T00:03:11.2102126+02:00</Time>
-    </Item>
-    <Item>
-      <Source>images\112.png</Source>
-      <Name>images\112</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\112.xnb</Output>
-      <Time>2010-10-02T23:59:41.4342141+02:00</Time>
     </Item>
     <Item>
       <Source>images\flag.png</Source>
@@ -74,22 +74,148 @@
       <Time>2010-10-02T23:51:11.0230203+02:00</Time>
     </Item>
     <Item>
-      <Source>sprites\coin1.png</Source>
-      <Name>sprites\coin1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
+      <Source>sounds\1up.wav</Source>
+      <Name>sounds\1up</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\coin1.xnb</Output>
-      <Time>2010-09-30T17:38:49.2169969+02:00</Time>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\1up.xnb</Output>
+      <Time>2010-10-06T22:17:23.6538101+02:00</Time>
     </Item>
     <Item>
-      <Source>sprites\mario1.png</Source>
-      <Name>sprites\mario1</Name>
+      <Source>sounds\castle.wav</Source>
+      <Name>sounds\castle</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\castle.xnb</Output>
+      <Time>2010-10-06T22:17:24.2598448+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\cave.wav</Source>
+      <Name>sounds\cave</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\cave.xnb</Output>
+      <Time>2010-10-06T22:17:25.853936+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\coin.wav</Source>
+      <Name>sounds\coin</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\coin.xnb</Output>
+      <Time>2010-10-06T22:17:24.298847+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\death.wav</Source>
+      <Name>sounds\death</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\death.xnb</Output>
+      <Time>2010-10-06T22:17:24.3368492+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\fireball.wav</Source>
+      <Name>sounds\fireball</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\fireball.xnb</Output>
+      <Time>2010-10-06T22:17:24.35185+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\gameover.wav</Source>
+      <Name>sounds\gameover</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\gameover.xnb</Output>
+      <Time>2010-10-06T22:17:24.4198539+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\goal.wav</Source>
+      <Name>sounds\goal</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\goal.xnb</Output>
+      <Time>2010-10-06T22:17:24.6228655+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\jump.wav</Source>
+      <Name>sounds\jump</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\jump.xnb</Output>
+      <Time>2010-10-06T22:17:24.6418666+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\jump2.wav</Source>
+      <Name>sounds\jump2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\jump2.xnb</Output>
+      <Time>2010-10-06T22:17:24.7148708+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\miniboss.wav</Source>
+      <Name>sounds\miniboss</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\miniboss.xnb</Output>
+      <Time>2010-10-06T22:17:24.8878807+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\spring.wav</Source>
+      <Name>sounds\spring</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\spring.xnb</Output>
+      <Time>2010-10-06T22:17:24.9268829+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\stomp.wav</Source>
+      <Name>sounds\stomp</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\stomp.xnb</Output>
+      <Time>2010-10-06T22:17:24.9418838+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\title.wav</Source>
+      <Name>sounds\title</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\title.xnb</Output>
+      <Time>2010-10-06T22:17:27.0810061+02:00</Time>
+    </Item>
+    <Item>
+      <Source>worlds\1-1\bg1.png</Source>
+      <Name>worlds\1-1\bg1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\mario1.xnb</Output>
-      <Time>2010-10-03T18:07:26.8190465+02:00</Time>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\worlds\1-1\bg1.xnb</Output>
+      <Time>2010-10-06T23:12:28.7118486+02:00</Time>
+    </Item>
+    <Item>
+      <Source>worlds\1-1\bg2.png</Source>
+      <Name>worlds\1-1\bg2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\worlds\1-1\bg2.xnb</Output>
+      <Time>2010-10-02T23:59:41.4342141+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

@@ -39,10 +39,10 @@ namespace yamiproject
             // TODO: Add your initialization logic here
             Window.AllowUserResizing = true;
             Window.ClientSizeChanged += new EventHandler(Window_ClientSizeChanged);
-            graphics.PreferredBackBufferWidth = (int)Globals.mario_res.X;
-            graphics.PreferredBackBufferHeight = (int)Globals.mario_res.Y;
+            graphics.PreferredBackBufferWidth = (int)Globals.mario_res.X*3;
+            graphics.PreferredBackBufferHeight = (int)Globals.mario_res.Y*3;
             graphics.IsFullScreen = false;
-            Window.Title = "Yami 0.01";
+            Window.Title = "Yami 0.03";
             graphics.ApplyChanges();
 
             base.Initialize();
@@ -100,40 +100,29 @@ namespace yamiproject
 
         void Window_ClientSizeChanged(object sender, EventArgs e)
         {
-            Point point = new Point(1,1);
+            int scale = 1;
             
             if (Window.ClientBounds.Width >= (Globals.mario_res.X * 3))
             {
-                graphics.PreferredBackBufferWidth = 3 * (int)Globals.mario_res.X;
-                point.X = 3;
+                graphics.PreferredBackBufferWidth = 3 * Globals.mario_res.X;
+                graphics.PreferredBackBufferHeight = 3 * Globals.mario_res.Y;
+                scale = 3;
             }
             else if (Window.ClientBounds.Width >= (Globals.mario_res.X * 2))
             {
-                graphics.PreferredBackBufferWidth = 2 * (int)Globals.mario_res.X;
-                point.X = 2;
+                graphics.PreferredBackBufferWidth = 2 * Globals.mario_res.X;
+                graphics.PreferredBackBufferHeight = 2 * Globals.mario_res.Y;
+                scale = 2;
             }
             else
             {
-                graphics.PreferredBackBufferWidth = (int)Globals.mario_res.X;
-                point.X = 1;
+                graphics.PreferredBackBufferWidth = Globals.mario_res.X;
+                graphics.PreferredBackBufferHeight = Globals.mario_res.Y;
+                scale = 1;
             }
-                
-            if (Window.ClientBounds.Height >= (Globals.mario_res.Y * 3))
-            {
-                graphics.PreferredBackBufferHeight = 3 * (int)Globals.mario_res.Y;
-                point.Y = 3;
-            }
-            else if (Window.ClientBounds.Height >= (Globals.mario_res.Y * 2))
-            {
-                graphics.PreferredBackBufferHeight = 2 * (int)Globals.mario_res.Y;
-                point.Y = 2;
-            }
-            else
-            {
-                graphics.PreferredBackBufferHeight = (int)Globals.mario_res.Y;
-                point.Y = 1;
-            }
-            Globals.Scale = new Vector2(point.X, point.Y);
+
+            Globals.Scale = scale;
+
             graphics.ApplyChanges();
         }
 

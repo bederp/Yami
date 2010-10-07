@@ -11,32 +11,32 @@ namespace yamiproject
     {
         int width;
         int height;
-        int speed = 5;
-        public Point camerapos;
-        KeyboardState prevkey;
+        public Vector2 camerapos;
 
         public Camera(int width, int height)
         {
             this.width = width;
             this.height = height;
-            camerapos = new Point(0, 0);
+            camerapos = new Vector2(0, 0);
         }
 
         public Matrix TransformMatrix
         {
             get
             {
-                return Matrix.CreateTranslation(new Vector3(-camerapos.X, -camerapos.Y, 0));
+                return Matrix.CreateScale(Globals.scale) * Matrix.CreateTranslation(new Vector3(-camerapos.X * Globals.scale, -camerapos.Y * Globals.scale, 0));
             }
         }
 
-        public Point Camerapos
+        public Vector2 Camerapos
         {
             get { return camerapos;}
 
             set
             {
-                Point tmp = new Point();
+                Vector2 tmp = new Vector2();
+                if (value.X < Camerapos.X)
+                    return;
                 if (value.X > width - Globals.mario_res.X)
                     tmp.X = width - (int)Globals.mario_res.X;
                 else if (value.X < 0)
@@ -53,14 +53,6 @@ namespace yamiproject
                 camerapos = tmp;
                 
             }
-        }
-
-        public void Move(Point direction)
-        {
-            Point tmp = Camerapos;
-            tmp.X+= direction.X*speed;
-            tmp.Y += direction.Y*speed;
-            Camerapos = tmp;
         }
 
         //public void Update(GameTime time)

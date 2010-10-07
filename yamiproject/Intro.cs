@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 
 
 
@@ -19,6 +20,7 @@ namespace yamiproject
         int select_choice = 0;
         ContentManager manager;
         SpriteBatch batch;
+        SoundEffectInstance sound;
         KeyboardState prevkey;
         SpriteFont font;
         string[] hud = new string[] { "1 PLAYER GAME", "2 PLAYER GAME", "TOP-"};
@@ -26,7 +28,6 @@ namespace yamiproject
         int top = 0;
         Vector2 top_position = new Vector2(136, 176);
         public EventHandler oninfo;
-        public EventHandler ondemo;
 
         public Intro(SpriteBatch batch, ContentManager manager)
         {
@@ -35,6 +36,10 @@ namespace yamiproject
             welcome = manager.Load<Texture2D>("images/welcome");
             select = manager.Load<Texture2D>("images/select");
             font = manager.Load<SpriteFont>("fonts/font");
+            SoundEffect tmp = manager.Load<SoundEffect>("sounds/title");
+            sound = tmp.CreateInstance();
+            sound.IsLooped = true;
+            sound.Play();
             
 
         }
@@ -43,14 +48,14 @@ namespace yamiproject
         {
             KeyboardState key = Keyboard.GetState();
             if (key.IsKeyDown(Keys.S) == true && prevkey.IsKeyDown(Keys.S) == false)
-            {
                 select_choice = (++select_choice) % 2;
-                Console.Out.WriteLine(select_choice);
-            }
 
             if (select_choice == 0)
-                if (key.IsKeyDown(Keys.Enter) == true && prevkey.IsKeyDown(Keys.Enter) == false)
+                if (key.IsKeyDown(Keys.Enter) == true)
+                {
+                    sound.Stop();
                     oninfo(this, null);
+                }
             prevkey = key;
             
 
@@ -81,5 +86,10 @@ namespace yamiproject
 
         }
 
+
+        internal void MusicStart()
+        {
+            sound.Play();
+        }
     }
 }
