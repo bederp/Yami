@@ -39,10 +39,10 @@ namespace yamiproject
             // TODO: Add your initialization logic here
             Window.AllowUserResizing = true;
             Window.ClientSizeChanged += new EventHandler(Window_ClientSizeChanged);
-            graphics.PreferredBackBufferWidth = (int)Globals.mario_res.X*3;
-            graphics.PreferredBackBufferHeight = (int)Globals.mario_res.Y*3;
+            graphics.PreferredBackBufferWidth = (int)Globals.mario_res.X*Globals.Scale;
+            graphics.PreferredBackBufferHeight = (int)Globals.mario_res.Y*Globals.Scale;
             graphics.IsFullScreen = false;
-            Window.Title = "Yami 0.03";
+            Window.Title = "Yami 0.04";
             graphics.ApplyChanges();
 
             base.Initialize();

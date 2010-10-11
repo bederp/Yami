@@ -52,6 +52,11 @@ namespace yamiproject
         {
             maps[currentmap].Draw(time);
         }
-        
+
+
+        internal void KillSound()
+        {
+            maps[currentmap].KillSound();
+        }
     }
 }

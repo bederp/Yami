@@ -2,6 +2,7 @@
 40 20
 
 [SOUNDS]
+maintheme
 
 [BACKGROUND]
 bg1
@@ -10,3 +11,4 @@ bg1
 col1.txt
 
 [OBJECTS]
+obj1.txt

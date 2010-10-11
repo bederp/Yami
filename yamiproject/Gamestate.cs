@@ -61,8 +61,10 @@ namespace yamiproject
             KeyboardState key = Keyboard.GetState();
             if (key.IsKeyDown(Keys.OemTilde) == true)
             {
+                level.KillSound();
                 intro.MusicStart();
                 state = State.intro;
+                level = new Level(batch, manager, "1-1");
             }
             
             switch (state) 
@@ -108,7 +110,7 @@ namespace yamiproject
         {
             passedtime += time.ElapsedGameTime.Milliseconds;
             Console.WriteLine("game time = " +passedtime);
-            if (passedtime >= 0 ) //2000
+            if (passedtime >= 2000 ) //2000
             {
                 passedtime = 0;
                 state = State.level;

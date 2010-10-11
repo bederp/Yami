@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 
 namespace yamiproject
 {
@@ -13,9 +14,11 @@ namespace yamiproject
     {
         KeyboardState prevkey;
         ColissionLayer colission;
+        List<SoundEffectInstance> sounds;
         float movementx = 0f;
         float movementy = 0f;
         int jumpstarty;
+        bool turbo = false;
         bool beginjump = true;
         bool orientation = true;
         int minx = 0;
@@ -25,12 +28,24 @@ namespace yamiproject
             get { return movementx; }
             set
             {
-                if (value > 2.0f)
-                    movementx = 2.0f;
-                else if (value < -2.0f)
-                    movementx = -2.0f;
+                if (turbo)
+                {
+                    if (value > 3.0f)
+                        movementx = 3.0f;
+                    else if (value < -3.0f)
+                        movementx = -3.0f;
+                    else
+                        movementx = value;
+                }
                 else
-                    movementx = value;
+                {
+                    if (value > 2.0f)
+                        movementx = 2.0f;
+                    else if (value < -2.0f)
+                        movementx = -2.0f;
+                    else
+                        movementx = value;
+                }
             }
         }
 
@@ -78,29 +93,29 @@ namespace yamiproject
         {
            
             FrameAnimation anim = new FrameAnimation(3, 15, 16, 0, 0);
-            anim.FramesPerSecond = 10;
+            anim.FramesPerSecond = 20;
             animations.Add("runright", anim);
             anim = new FrameAnimation(3, 15, 16, 0, 17);
-            anim.FramesPerSecond = 10;
+            anim.FramesPerSecond = 20;
             animations.Add("runleft", anim);
             anim = new FrameAnimation(1, 16, 16, 45, 0);
-            anim.FramesPerSecond = 10;
+            anim.FramesPerSecond = 20;
             animations.Add("jumpright", anim);
             anim = new FrameAnimation(1, 16, 16, 45, 17);
-            anim.FramesPerSecond = 10;
+            anim.FramesPerSecond = 20;
             animations.Add("jumpleft", anim);
             anim = new FrameAnimation(1, 13, 16, 61, 0);
-            anim.FramesPerSecond = 10;
+            anim.FramesPerSecond = 20;
             animations.Add("slideright", anim);
             anim = new FrameAnimation(1, 13, 16, 61, 17);
-            anim.FramesPerSecond = 10;
+            anim.FramesPerSecond = 20;
             animations.Add("slideleft", anim);
-            anim.FramesPerSecond = 10;
+            anim.FramesPerSecond = 20;
             anim = new FrameAnimation(1, 12, 16, 74 , 0);
-            anim.FramesPerSecond = 10;
+            anim.FramesPerSecond = 20;
             animations.Add("stopright", anim);
             anim = new FrameAnimation(1, 12, 16, 74, 17);
-            anim.FramesPerSecond = 10;
+            anim.FramesPerSecond = 20;
             animations.Add("stopleft", anim);
             //anim = new FrameAnimation(1, 33, 33, 33, 66);
             //animations.Add("slide", anim);
@@ -112,6 +127,11 @@ namespace yamiproject
             CurrentAnimationName = "stopright";
             this.position = position;
             this.colission = colission;
+            sounds = new List<SoundEffectInstance>();
+            
+            SoundEffect tmp = manager.Load<SoundEffect>("sounds/jump");
+            SoundEffectInstance sound = tmp.CreateInstance();
+            sounds.Add(sound);
         }
 
         public void  Update(GameTime time)
@@ -120,7 +140,8 @@ namespace yamiproject
             Jump();
             AnimationMachine();
             Move();
-            
+
+            WallTest();
             GroundTest();
             
             if (position.X - (Globals.mario_res.X / 2) + Globals.title.X > minx)
@@ -140,6 +161,7 @@ namespace yamiproject
 
         public void AnimationMachine()
         {
+            IsAnimating = true;
             if (curstate2 == State.jump)
             {
                 if (orientation)
@@ -170,10 +192,12 @@ namespace yamiproject
         private void KeyboardInput()
         {
             KeyboardState key = Keyboard.GetState();
+            turbo = false;
             if (key.IsKeyDown(Keys.Right) == true)
             {
-                if (key.IsKeyDown(Keys.S) == true)
+                if (key.IsKeyDown(Keys.D) == true)
                 {
+                    turbo = true;
                     Movementx += 0.2f;
                 }
 
@@ -181,8 +205,9 @@ namespace yamiproject
             }
             else if (key.IsKeyDown(Keys.Left) == true)
             {
-                if (key.IsKeyDown(Keys.S) == true)
+                if (key.IsKeyDown(Keys.D) == true)
                 {
+                    turbo = true;
                     Movementx -= 0.2f;
                 }
                 Movementx -= 0.1f;
@@ -190,7 +215,7 @@ namespace yamiproject
             else
                 Frictionx();
 
-            if (key.IsKeyDown(Keys.D) == true)
+            if (key.IsKeyDown(Keys.F) == true)
             {
                 if(curstate2 == State.standing)
                     curstate2 = State.jump;
@@ -205,12 +230,13 @@ namespace yamiproject
             {
                 if(beginjump)
                 {
+                    sounds[0].Play();
                     jumpstarty = position.Y;
                     movementy = -5f;
                     beginjump = false;
                 }
                 
-                if(jumpstarty-position.Y<50)
+                if(jumpstarty-position.Y<50 + 16)
                 movementy+=0.1f;
                 else
                 {
@@ -230,7 +256,7 @@ namespace yamiproject
             int y1 = ((position.Y + Globals.yscanlineoffset + 16) / 16);
             if (y1 > 13)
             {
-                if (y1 > 15)
+                if (y1 >= 14)
                     curstate2 = State.die;
                 return;
             }
@@ -248,7 +274,7 @@ namespace yamiproject
                 position.Y = (y1 * 16) - 16 - Globals.yscanlineoffset;
             }
             else
-                movementy += 0.2f;
+                movementy += 0.5f;
             string tmp = curstate2.ToString() + position.ToString() + " x1=" + x1 + " x2=" + x2 + " y1=" + y1;
             Console.WriteLine(tmp);
 
@@ -256,8 +282,32 @@ namespace yamiproject
 
         public void WallTest()
         {
-            if (Movementx == 0f)
+            if (Movementx == 0f )
                 return;
+
+            int y1 = ((position.Y + Globals.yscanlineoffset) / 16);
+            int y2 = ((position.Y + Globals.yscanlineoffset + 16) / 16);
+            if (y2 >= 14)
+                return;
+            int x1 = position.X/16;
+            int x2 = (position.X + 16)/16;
+
+            if (Movementx > 0f)
+            {
+                if (colission.GetCellIndex(x2, y1) == 1)
+                {
+                    position.X = (x2 * 16 - 16);
+                    Movementx = 0f;
+                }      
+            }
+            else if (Movementx < 0f)
+            {
+                if (colission.GetCellIndex(x1, y1) == 1)
+                {
+                    position.X = (x1 * 16 + 16);
+                    Movementx = 0f;
+                }
+            }
 
         }
 

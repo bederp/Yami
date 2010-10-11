@@ -12,7 +12,7 @@ namespace yamiproject
        public static Point mario_res = new Point(256, 224);
        public static Point title = new Point(16, 16);
        public static int yscanlineoffset = 8;
-       public static int scale = 3;
+       public static int scale = 1;
 
        public static int Scale
        {
@@ -26,6 +26,23 @@ namespace yamiproject
                 else
                     scale = value;
             }
+       }
+
+       public static Point ConvertPositionToCell(Point position)
+       {
+           return new Point(
+               position.X/title.X,
+               (position.Y+yscanlineoffset)/title.Y);
+       }
+
+       public static int ConvertCellToX(int x)
+       {
+           return (x*16);
+       }
+
+       public static int ConvertCellToY(int y)
+       {
+           return (y * 16 - yscanlineoffset);
        }
    }
 }

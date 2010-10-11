@@ -1,0 +1,14 @@
+[START]
+40 20
+
+[SOUNDS]
+maintheme
+
+[BACKGROUND]
+bg1
+
+[COLISSION]
+col1.txt
+
+[OBJECTS]
+obj1.txt

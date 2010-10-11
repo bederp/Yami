@@ -80,7 +80,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\1up.xnb</Output>
-      <Time>2010-10-06T22:17:23.6538101+02:00</Time>
+      <Time>2010-10-11T21:39:33.5840113+02:00</Time>
     </Item>
     <Item>
       <Source>sounds\castle.wav</Source>
@@ -92,22 +92,13 @@
       <Time>2010-10-06T22:17:24.2598448+02:00</Time>
     </Item>
     <Item>
-      <Source>sounds\cave.wav</Source>
-      <Name>sounds\cave</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\cave.xnb</Output>
-      <Time>2010-10-06T22:17:25.853936+02:00</Time>
-    </Item>
-    <Item>
       <Source>sounds\coin.wav</Source>
       <Name>sounds\coin</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\coin.xnb</Output>
-      <Time>2010-10-06T22:17:24.298847+02:00</Time>
+      <Time>2010-10-11T21:40:11.3811731+02:00</Time>
     </Item>
     <Item>
       <Source>sounds\death.wav</Source>
@@ -116,7 +107,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\death.xnb</Output>
-      <Time>2010-10-06T22:17:24.3368492+02:00</Time>
+      <Time>2010-10-11T21:46:56.366337+02:00</Time>
     </Item>
     <Item>
       <Source>sounds\fireball.wav</Source>
@@ -125,7 +116,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\fireball.xnb</Output>
-      <Time>2010-10-06T22:17:24.35185+02:00</Time>
+      <Time>2010-10-11T21:40:44.4880668+02:00</Time>
     </Item>
     <Item>
       <Source>sounds\gameover.wav</Source>
@@ -134,7 +125,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\gameover.xnb</Output>
-      <Time>2010-10-06T22:17:24.4198539+02:00</Time>
+      <Time>2010-10-11T21:46:42.0695192+02:00</Time>
     </Item>
     <Item>
       <Source>sounds\goal.wav</Source>
@@ -152,7 +143,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\jump.xnb</Output>
-      <Time>2010-10-06T22:17:24.6418666+02:00</Time>
+      <Time>2010-10-11T21:41:41.0102996+02:00</Time>
     </Item>
     <Item>
       <Source>sounds\jump2.wav</Source>
@@ -188,7 +179,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\stomp.xnb</Output>
-      <Time>2010-10-06T22:17:24.9418838+02:00</Time>
+      <Time>2010-10-11T21:43:30.0715376+02:00</Time>
     </Item>
     <Item>
       <Source>sounds\title.wav</Source>
@@ -216,6 +207,60 @@
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\worlds\1-1\bg2.xnb</Output>
       <Time>2010-10-02T23:59:41.4342141+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\maintheme.wav</Source>
+      <Name>sounds\maintheme</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\maintheme.xnb</Output>
+      <Time>2010-10-11T18:01:54.4830734+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\box.png</Source>
+      <Name>sprites\box</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\box.xnb</Output>
+      <Time>2010-10-11T20:39:29.718882+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\brick.png</Source>
+      <Name>sprites\brick</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\brick.xnb</Output>
+      <Time>2010-10-11T23:01:34.7534861+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\bump.wav</Source>
+      <Name>sounds\bump</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\bump.xnb</Output>
+      <Time>2010-10-11T21:39:24.1614723+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\breakblock.wav</Source>
+      <Name>sounds\breakblock</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\breakblock.xnb</Output>
+      <Time>2010-10-11T21:39:16.8890564+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\powerupa.wav</Source>
+      <Name>sounds\powerupa</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\powerupa.xnb</Output>
+      <Time>2010-10-11T21:42:55.4895596+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

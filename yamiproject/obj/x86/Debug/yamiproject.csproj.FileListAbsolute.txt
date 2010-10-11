@@ -21,7 +21,6 @@ E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\coin1.png
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\marios.png
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\1up.xnb
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\castle.xnb
-E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\cave.xnb
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\coin.xnb
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\death.xnb
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\fireball.xnb
@@ -42,7 +41,6 @@ E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\worlds\1-1\map1.txt
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\worlds\1-1\col2.txt
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\1up.wav
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\castle.wav
-E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\cave.wav
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\coin.wav
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\death.wav
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\fireball.wav
@@ -56,3 +54,16 @@ E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\stomp.wav
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\title.wav
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\worlds\1-1\bg1.png
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\worlds\1-1\bg2.png
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\maintheme.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\maintheme.wav
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\box.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\brick.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\box.png
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\brick.png
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\bump.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\bump.wav
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\breakblock.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\breakblock.wav
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\worlds\1-1\obj1.txt
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\powerupa.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\powerupa.wav

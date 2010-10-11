@@ -28,7 +28,7 @@ namespace yamiproject
             this.manager = manager;
             this.batch = batch;
             sounds = new List<SoundEffectInstance>();
-
+            objects = new List<Sprite>();
             bool readingtStart = false;
             bool readingSounds = false;
             bool readingBackground = false;
@@ -106,6 +106,28 @@ namespace yamiproject
                     }
                     else if (readingObjects)
                     {
+                        ObjectsLayer tmp = ObjectsLayer.FromFile("worlds/" + world + "/" + line);
+                        
+                        for (int x = 0; x < tmp.width; x++)
+                        {
+                            for (int y = 0; y < tmp.height; y++)
+                            {
+                                if (tmp.GetCellIndex(x, y) == 0)
+                                    continue;
+                                if (tmp.GetCellIndex(x, y) > 0 && tmp.GetCellIndex(x, y) < 5)
+                                {
+                                    Box tmp3 = new Box(batch, manager, tmp.GetCellIndex(x, y), new Point(Globals.ConvertCellToX(x), Globals.ConvertCellToY(y)));
+                                    objects.Add(tmp3);
+                                }
+                                else if (tmp.GetCellIndex(x, y) > 4 && tmp.GetCellIndex(x, y) < 7)
+                                {
+                                    Brick tmp3 = new Brick(batch, manager, tmp.GetCellIndex(x, y), new Point(Globals.ConvertCellToX(x), Globals.ConvertCellToY(y)));
+                                    objects.Add(tmp3);
+                                }
+
+                            }
+                        }
+ 
 
                     }
 
@@ -121,12 +143,18 @@ namespace yamiproject
 
         public void Update(GameTime time)
         {
-            //camera.Update(time);
             mario.Update(time);
+            sounds[0].Play();
             camera.Camerapos = new Vector2(mario.position.X +
                 mario.CurrentAnimation.CurrentRect.Width - 128,
                 mario.position.Y +
                 mario.CurrentAnimation.CurrentRect.Height - 112);
+
+            foreach (Sprite s in objects)
+            {
+                s.Update(time);
+            }
+
         }
 
         public void Draw(GameTime time)
@@ -139,7 +167,20 @@ namespace yamiproject
 
             batch.Draw(background, new Rectangle(0, 0, size.X, size.Y), Color.White);
             mario.Draw(time);
+
+            foreach (Sprite s in objects)
+            {
+                s.Draw(time);
+            }
             batch.End();
+        }
+
+        internal void KillSound()
+        {
+            foreach (SoundEffectInstance s in sounds)
+            {
+                s.Dispose();
+            }
         }
     }
 }
