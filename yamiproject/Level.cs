@@ -15,6 +15,10 @@ namespace yamiproject
         int currentmap;
         List<Map> maps;
 
+        public Map GetCurrentMap()
+        {
+            return maps[currentmap];
+        }
         public Level(SpriteBatch batch, ContentManager manager, string world)
         {
             currentmap = 0;

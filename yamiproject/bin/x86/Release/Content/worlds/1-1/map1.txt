@@ -3,6 +3,7 @@
 
 [SOUNDS]
 maintheme
+warning
 
 [BACKGROUND]
 bg1

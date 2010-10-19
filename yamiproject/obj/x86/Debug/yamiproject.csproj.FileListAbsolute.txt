@@ -67,3 +67,5 @@ E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\breakblock.w
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\worlds\1-1\obj1.txt
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\powerupa.xnb
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\powerupa.wav
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\warning.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\warning.wav

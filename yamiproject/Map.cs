@@ -17,9 +17,11 @@ namespace yamiproject
         ContentManager manager;
         Point size;
         Point start;
+        bool killsound = false;
         Camera camera;
         List<SoundEffectInstance> sounds;
-        List<Sprite> objects;
+        List<Sprite> staticobjects;
+        List<Sprite> moveableobjects;
         Mario mario;
         ColissionLayer colission;
 
@@ -28,7 +30,8 @@ namespace yamiproject
             this.manager = manager;
             this.batch = batch;
             sounds = new List<SoundEffectInstance>();
-            objects = new List<Sprite>();
+            staticobjects = new List<Sprite>();
+            moveableobjects = new List<Sprite>();
             bool readingtStart = false;
             bool readingSounds = false;
             bool readingBackground = false;
@@ -117,12 +120,12 @@ namespace yamiproject
                                 if (tmp.GetCellIndex(x, y) > 0 && tmp.GetCellIndex(x, y) < 5)
                                 {
                                     Box tmp3 = new Box(batch, manager, tmp.GetCellIndex(x, y), new Point(Globals.ConvertCellToX(x), Globals.ConvertCellToY(y)));
-                                    objects.Add(tmp3);
+                                    staticobjects.Add(tmp3);
                                 }
                                 else if (tmp.GetCellIndex(x, y) > 4 && tmp.GetCellIndex(x, y) < 7)
                                 {
                                     Brick tmp3 = new Brick(batch, manager, tmp.GetCellIndex(x, y), new Point(Globals.ConvertCellToX(x), Globals.ConvertCellToY(y)));
-                                    objects.Add(tmp3);
+                                    staticobjects.Add(tmp3);
                                 }
 
                             }
@@ -136,7 +139,7 @@ namespace yamiproject
             
             size = new Point(this.background.Width, this.background.Height);
             camera = new Camera(size.X, size.Y);
-            mario = new Mario(batch, manager, start, colission);
+            mario = new Mario(batch, manager, start, colission, staticobjects, moveableobjects);
         }
            
         
@@ -144,13 +147,18 @@ namespace yamiproject
         public void Update(GameTime time)
         {
             mario.Update(time);
-            sounds[0].Play();
+
+            if(!killsound)
+                if (sounds[1].State == SoundState.Stopped)
+                    if (sounds[0].State == SoundState.Stopped)
+                        sounds[0].Play();
             camera.Camerapos = new Vector2(mario.position.X +
                 mario.CurrentAnimation.CurrentRect.Width - 128,
                 mario.position.Y +
                 mario.CurrentAnimation.CurrentRect.Height - 112);
 
-            foreach (Sprite s in objects)
+            mario.minx = (int)camera.Camerapos.X;
+            foreach (Sprite s in staticobjects)
             {
                 s.Update(time);
             }
@@ -166,21 +174,55 @@ namespace yamiproject
                 camera.TransformMatrix);
 
             batch.Draw(background, new Rectangle(0, 0, size.X, size.Y), Color.White);
-            mario.Draw(time);
-
-            foreach (Sprite s in objects)
+            
+            foreach (Sprite s in staticobjects)
             {
                 s.Draw(time);
             }
+            mario.Draw(time);
+            
             batch.End();
         }
 
         internal void KillSound()
         {
+            killsound = true;
             foreach (SoundEffectInstance s in sounds)
             {
-                s.Dispose();
+                s.Stop();
             }
+        }
+
+        public void MapRestart()
+        {
+            Gamestate.Restart();
+            killsound = false;
+            mario.curstate2 = Mario.State.falling;
+            mario.orientation = true;
+            mario.beginjump = true;
+            mario.deathfall = false;
+            mario.position = start;
+            mario.timeofdeath = 0;
+            camera.camerapos = new Vector2(0f, 0f);
+            sounds[0].Pitch = 0f;
+            sounds[0].Play();
+
+            foreach (Sprite s in staticobjects)
+            {
+                s.Restart();
+            }
+        }
+
+        public void MapSpeedUp()
+        {
+            sounds[0].Stop();
+            sounds[0].Pitch = 0.6f;
+            sounds[1].Play();
+        }
+
+        internal void TimeUp()
+        {
+            mario.curstate2 = Mario.State.die;
         }
     }
 }

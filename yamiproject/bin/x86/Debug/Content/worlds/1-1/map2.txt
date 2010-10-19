@@ -2,6 +2,8 @@
 40 40
 
 [SOUNDS]
+maintheme
+warning
 
 [BACKGROUND]
 bg2

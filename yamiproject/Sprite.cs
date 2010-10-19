@@ -15,6 +15,7 @@ namespace yamiproject
         string currentanimation = null;
         public Point position = Point.Zero;
         bool animating = true;
+        public bool visable = true;
         Texture2D texture;
         SpriteBatch batch;
         ContentManager manager;
@@ -53,7 +54,7 @@ namespace yamiproject
             this.manager = manager;
         }
 
-        public void Update(GameTime time)
+        public virtual void Update(GameTime time)
         {
             if (!IsAnimating)
                 return;
@@ -65,6 +66,8 @@ namespace yamiproject
 
         public void Draw(GameTime time)
         {
+            if (!visable)
+                return;
             FrameAnimation animation = CurrentAnimation;
             if (animation != null)
             {
@@ -79,7 +82,14 @@ namespace yamiproject
                     animation.CurrentRect,
                     Color.White);
             }
-                
         }
+        public virtual void Colission(int size)
+        {
+        }
+
+        public virtual void Restart()
+        {
+        }
+
     }
 }

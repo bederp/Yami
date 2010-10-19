@@ -20,7 +20,7 @@ namespace yamiproject
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Gamestate gamestate;
+       
         
         public Game1()
         {
@@ -42,7 +42,7 @@ namespace yamiproject
             graphics.PreferredBackBufferWidth = (int)Globals.mario_res.X*Globals.Scale;
             graphics.PreferredBackBufferHeight = (int)Globals.mario_res.Y*Globals.Scale;
             graphics.IsFullScreen = false;
-            Window.Title = "Yami 0.04";
+            Window.Title = "Yami 0.05";
             graphics.ApplyChanges();
 
             base.Initialize();
@@ -57,7 +57,7 @@ namespace yamiproject
             // Create a new SpriteBatch, which can be used to draw textures.
             
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            gamestate = new Gamestate(spriteBatch, this.Content, GraphicsDevice);
+            Gamestate.Initialize(spriteBatch, this.Content, GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
         }
@@ -82,7 +82,7 @@ namespace yamiproject
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
-            gamestate.Update(gameTime);
+            Gamestate.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -94,7 +94,7 @@ namespace yamiproject
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            gamestate.Draw(gameTime);
+            Gamestate.Draw(gameTime);
             base.Draw(gameTime);
         }
 

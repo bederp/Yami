@@ -15,14 +15,55 @@ namespace yamiproject
         KeyboardState prevkey;
         ColissionLayer colission;
         List<SoundEffectInstance> sounds;
+        List<Sprite> staticobjects;
+        List<Sprite> movableobjects;
         float movementx = 0f;
         float movementy = 0f;
         int jumpstarty;
         bool turbo = false;
-        bool beginjump = true;
-        bool orientation = true;
-        int minx = 0;
-        
+        public bool beginjump = true;
+        public bool orientation = true;
+        public int minx = 0;
+        public int timeofdeath = 0;
+        public bool deathfall = false;
+        public bool deathjump = true;
+
+        public enum Animation
+        {
+            stopleft,
+            stopright,
+            runleft,
+            runright,
+            jumpleft,
+            jumpright,
+            sit,
+            slide,
+            swimleft,
+            swimright,
+            die
+        }
+
+        public enum State
+        {
+            falling,
+            standing,
+            jump,
+            die
+        }
+
+        public enum Size
+        {
+            small,
+            big,
+            flover,
+            invincible
+        }
+
+        Animation curstate = Animation.stopright;
+        public State curstate2 = State.standing;
+        public Size curstate3 = Size.small;
+
+
         public float Movementx
         {
             get { return movementx; }
@@ -61,34 +102,10 @@ namespace yamiproject
                     Movementx = 0;
             }
         }
-        public enum Animation
-        {
-            stopleft,
-            stopright,
-            runleft,
-            runright,
-            jumpleft,
-            jumpright,
-            sit,
-            slide,
-            swimleft,
-            swimright,
-            die
-        }
-        public enum State
-        {
-            falling,
-            standing,
-            jump,
-            die
-        }
-
-        Animation curstate = Animation.stopright;
-        State curstate2 = State.standing;
+        
 
 
-
-        public Mario(SpriteBatch batch, ContentManager manager, Point position, ColissionLayer colission)
+        public Mario(SpriteBatch batch, ContentManager manager, Point position, ColissionLayer colission, List<Sprite> staticobjects, List<Sprite> movableobjects)
             : base(batch, manager, "sprites/marios")
         {
            
@@ -98,25 +115,28 @@ namespace yamiproject
             anim = new FrameAnimation(3, 15, 16, 0, 17);
             anim.FramesPerSecond = 20;
             animations.Add("runleft", anim);
-            anim = new FrameAnimation(1, 16, 16, 45, 0);
+            anim = new FrameAnimation(1, 16, 16, 48, 0);
             anim.FramesPerSecond = 20;
             animations.Add("jumpright", anim);
-            anim = new FrameAnimation(1, 16, 16, 45, 17);
+            anim = new FrameAnimation(1, 16, 16, 48, 17);
             anim.FramesPerSecond = 20;
             animations.Add("jumpleft", anim);
-            anim = new FrameAnimation(1, 13, 16, 61, 0);
+            anim = new FrameAnimation(1, 16, 16, 66, 0);
             anim.FramesPerSecond = 20;
             animations.Add("slideright", anim);
-            anim = new FrameAnimation(1, 13, 16, 61, 17);
+            anim = new FrameAnimation(1, 16, 16, 66, 17);
             anim.FramesPerSecond = 20;
             animations.Add("slideleft", anim);
             anim.FramesPerSecond = 20;
-            anim = new FrameAnimation(1, 12, 16, 74 , 0);
+            anim = new FrameAnimation(1, 16, 16, 80 , 0);
             anim.FramesPerSecond = 20;
             animations.Add("stopright", anim);
-            anim = new FrameAnimation(1, 12, 16, 74, 17);
+            anim = new FrameAnimation(1, 16, 16, 80, 17);
             anim.FramesPerSecond = 20;
             animations.Add("stopleft", anim);
+            anim = new FrameAnimation(1, 16, 16, 0, 34);
+            anim.FramesPerSecond = 20;
+            animations.Add("die", anim);
             //anim = new FrameAnimation(1, 33, 33, 33, 66);
             //animations.Add("slide", anim);
             //anim = new FrameAnimation(4, 33, 33, 66, 66);
@@ -127,26 +147,67 @@ namespace yamiproject
             CurrentAnimationName = "stopright";
             this.position = position;
             this.colission = colission;
+            this.staticobjects = staticobjects;
+            this.movableobjects = movableobjects;
+            
             sounds = new List<SoundEffectInstance>();
             
             SoundEffect tmp = manager.Load<SoundEffect>("sounds/jump");
             SoundEffectInstance sound = tmp.CreateInstance();
             sounds.Add(sound);
+            tmp = manager.Load<SoundEffect>("sounds/death");
+            sound = tmp.CreateInstance();
+            sounds.Add(sound);
         }
 
-        public void  Update(GameTime time)
+        public override void Update(GameTime time)
         {
-            KeyboardInput();
-            Jump();
-            AnimationMachine();
+            Death(time);
+            KeyboardInput();  
             Move();
-
+            AnimationMachine();
             WallTest();
             GroundTest();
+            Jump();
+            HeadTest();
+            //Console.WriteLine(curstate2);
+         
             
-            if (position.X - (Globals.mario_res.X / 2) + Globals.title.X > minx)
-                minx = position.X - (Globals.mario_res.X / 2) +Globals.title.X;
+
             base.Update(time);
+        }
+
+        public void Death(GameTime time)
+        {
+            if (curstate2 != State.die)
+                return;
+            Gamestate.BackgroundMusicStop();
+            movementx = 0f;
+            sounds[1].Play();
+            timeofdeath += time.ElapsedGameTime.Milliseconds;
+
+            int y1 = ((position.Y + Globals.yscanlineoffset + 16) / 16);
+            if (y1 < 16)
+            {
+                if (deathjump)
+                {
+                    movementy = -3f;
+                    deathjump = false;
+                }
+                else 
+                {
+                    movementy += 0.2f;
+                }
+
+            }
+            if (timeofdeath > 2500)
+            {
+                Score.Death();
+                if (Score.lives > 0)
+                    Gamestate.GameInfo();
+                else
+                    Gamestate.GameOver();
+            }
         }
 
         private void Move()
@@ -162,7 +223,12 @@ namespace yamiproject
         public void AnimationMachine()
         {
             IsAnimating = true;
-            if (curstate2 == State.jump)
+
+            if (curstate2 == State.die)
+            {
+                CurrentAnimationName = Animation.die.ToString();
+            }
+            else if (curstate2 == State.jump)
             {
                 if (orientation)
                     CurrentAnimationName = Animation.jumpright.ToString();
@@ -191,6 +257,8 @@ namespace yamiproject
 
         private void KeyboardInput()
         {
+            if (curstate2 == State.die)
+                return;
             KeyboardState key = Keyboard.GetState();
             turbo = false;
             if (key.IsKeyDown(Keys.Right) == true)
@@ -250,14 +318,17 @@ namespace yamiproject
 
         public void GroundTest()
         {
-            if(curstate2 == State.jump)
+            if(curstate2 == State.jump || curstate2 == State.die)
                 return;
             curstate2 = State.falling;
             int y1 = ((position.Y + Globals.yscanlineoffset + 16) / 16);
             if (y1 > 13)
             {
-                if (y1 >= 14)
+                if (y1 > 15)
+                {
+                    beginjump = true;
                     curstate2 = State.die;
+                }
                 return;
             }
             int x1 = position.X / 16;
@@ -276,13 +347,13 @@ namespace yamiproject
             else
                 movementy += 0.5f;
             string tmp = curstate2.ToString() + position.ToString() + " x1=" + x1 + " x2=" + x2 + " y1=" + y1;
-            Console.WriteLine(tmp);
+            //Console.WriteLine(tmp);
 
         }
 
         public void WallTest()
         {
-            if (Movementx == 0f )
+            if (Movementx == 0f)
                 return;
 
             int y1 = ((position.Y + Globals.yscanlineoffset) / 16);
@@ -309,6 +380,29 @@ namespace yamiproject
                 }
             }
 
+        }
+
+        public void HeadTest()
+        {
+            if (curstate2 != State.jump)
+                return;
+
+           int x1 = position.X+4;
+           int x2 = x1 + 8;
+           int y1 = position.Y;
+
+           foreach (Sprite s in staticobjects)
+           {
+               if((Globals.ConvertPositionToCell(s.position) == Globals.ConvertPositionToCell(new Point(x1, y1))) || 
+                   Globals.ConvertPositionToCell(s.position) == Globals.ConvertPositionToCell(new Point(x2, y1)))
+               {
+                   s.Colission((int)curstate3);
+                   sounds[0].Stop();
+                   curstate2 = State.falling;
+                   movementy = 0f;
+                   beginjump = true;
+               }
+           }
         }
 
     }

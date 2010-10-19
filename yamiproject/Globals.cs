@@ -12,7 +12,7 @@ namespace yamiproject
        public static Point mario_res = new Point(256, 224);
        public static Point title = new Point(16, 16);
        public static int yscanlineoffset = 8;
-       public static int scale = 1;
+       public static int scale = 2;
 
        public static int Scale
        {

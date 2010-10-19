@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sprites\marios.xnb</Output>
-      <Time>2010-10-07T18:36:31.3734709+02:00</Time>
+      <Time>2010-10-19T19:02:05.5025437+02:00</Time>
     </Item>
     <Item>
       <Source>worlds\1-1\bg1.png</Source>
@@ -261,6 +261,15 @@
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sounds\powerupa.xnb</Output>
       <Time>2010-10-11T21:42:55.4895596+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\warning.wav</Source>
+      <Name>sounds\warning</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sounds\warning.xnb</Output>
+      <Time>2010-10-11T21:47:13.1052944+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

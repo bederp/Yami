@@ -27,6 +27,7 @@ Content\sounds\maintheme.xnb
 Content\sounds\bump.xnb
 Content\sounds\breakblock.xnb
 Content\sounds\powerupa.xnb
+Content\sounds\warning.xnb
 Content\images\welcome.png
 Content\images\select.png
 Content\images\mariohud.png
@@ -54,6 +55,7 @@ Content\sprites\brick.png
 Content\sounds\bump.wav
 Content\sounds\breakblock.wav
 Content\sounds\powerupa.wav
+Content\sounds\warning.wav
 Content\worlds\1-1\col1.txt
 Content\worlds\1-1\def.txt
 Content\worlds\1-1\map1.txt

@@ -25,9 +25,7 @@ namespace yamiproject
         SpriteFont font;
         string[] hud = new string[] { "1 PLAYER GAME", "2 PLAYER GAME", "TOP-"};
         Vector2[] hud_positions = new Vector2[] { new Vector2(89, 136), new Vector2(89, 153), new Vector2(97, 176) };
-        int top = 0;
         Vector2 top_position = new Vector2(136, 176);
-        public EventHandler oninfo;
 
         public Intro(SpriteBatch batch, ContentManager manager)
         {
@@ -54,7 +52,7 @@ namespace yamiproject
                 if (key.IsKeyDown(Keys.Enter) == true)
                 {
                     sound.Stop();
-                    oninfo(this, null);
+                    Gamestate.StartNewGame(select_choice);
                 }
             prevkey = key;
             
@@ -79,7 +77,7 @@ namespace yamiproject
                     Globals.scale, SpriteEffects.None, 0f);
             }
 
-            batch.DrawString(font, String.Format("{0:000000.}", top), top_position * Globals.scale,
+            batch.DrawString(font, String.Format("{0:000000.}", Score.top), top_position * Globals.scale,
                     Color.White, 0, Vector2.Zero,
                     Globals.scale, SpriteEffects.None, 0f);
             batch.End();
