@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using System.Threading;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace yamiproject
 {
@@ -16,7 +17,13 @@ namespace yamiproject
         static Intro intro;
         static Level level;
         static int passedtime = 0;
+        public static int delaytime;
+        static Video myVideoFile;
+        static Video myVideoFile2;
+        static VideoPlayer videoPlayer;
+
         static SoundEffectInstance gameover;
+        static SoundEffectInstance coinstoscoresound;
         static ContentManager manager;
         static SpriteBatch batch;
         static GraphicsDevice graphics;
@@ -29,13 +36,17 @@ namespace yamiproject
         public static int mariotime;
         static bool speedup = false;
         static public bool timeup = false;
+        static public bool timerstopped = false;
+        static public bool coinstoscore = false;
 
         public enum State
         {
             intro,
             info,
             level,
-            gemeover
+            gameover,
+            ending,
+            rickroll,
         }
 
         public static State state;
@@ -63,17 +74,52 @@ namespace yamiproject
                 case State.level:
                     level.Update(time);
                     break;
-                case State.gemeover:
+                case State.gameover:
                     GameoverUpdate(time);
+                    break;
+                case State.ending:
+                    EndingUpdate(time);
+                    break;
+                case State.rickroll:
+                    RickRollUpdate(time);
                     break;
             }
             GameStateUpdate(time);
         }
+        public static void Draw(GameTime time)
+        {
+            switch (state)
+            {
+                case State.intro:
+                    intro.Draw(time);
+                    break;
+                case State.info:
+                    GameInfoDraw(time);
+                    break;
+                case State.level:
+                    level.Draw(time);
+                    break;
+                case State.gameover:
+                    GameoverDraw(time);
+                    break;
+                case State.ending:
+                    EndingDraw(time);
+                    break;
+                case State.rickroll:
+                    RickRollDraw(time);
+                    break;
+            }
+            if(state != State.ending && state != State.rickroll)
+                GamestateDraw(time);
+        }
 
         private static void GameStateUpdate(GameTime time)
         {
+            CoinsToScoreUpdate();
             if (state == State.level)
             {
+                if (timerstopped)
+                    return;
                 passedtime += time.ElapsedGameTime.Milliseconds;
                 if (mariotime <= 100)
                 {
@@ -104,6 +150,39 @@ namespace yamiproject
                 }
             }
         }
+        private static void GamestateDraw(GameTime time)
+        {
+
+            batch.Begin();
+            for (int i = 0; i < 3; i++)
+            {
+                batch.DrawString(font, hud[i], hud_positions[i] * Globals.Scale,
+                    Color.White, 0, Vector2.Zero,
+                    Globals.Scale, SpriteEffects.None, 0f);
+            }
+
+            batch.DrawString(font, String.Format("{0:000000.}", Score.score), hud_positions[3] * Globals.Scale,
+                    Color.White, 0, Vector2.Zero,
+                    Globals.Scale, SpriteEffects.None, 0f);
+
+            String tmp = "x" + String.Format("{0:00.}", Score.coins);
+            batch.DrawString(font, tmp, hud_positions[4] * Globals.Scale,
+                    Color.White, 0, Vector2.Zero,
+                    Globals.Scale, SpriteEffects.None, 0f);
+
+            tmp = world[0].ToString() + "-" + world[1].ToString();
+            batch.DrawString(font, tmp, hud_positions[5] * Globals.Scale,
+                    Color.White, 0, Vector2.Zero,
+                    Globals.Scale, SpriteEffects.None, 0f);
+
+            if (state == State.level)
+            {
+                batch.DrawString(font, String.Format("{0:000.}", mariotime), hud_positions[6] * Globals.Scale,
+                        Color.White, 0, Vector2.Zero,
+                        Globals.Scale, SpriteEffects.None, 0f);
+            }
+            batch.End();
+        }
 
         public static void GameoverUpdate(GameTime time)
         {
@@ -118,28 +197,6 @@ namespace yamiproject
                 state = State.intro;
             }
         }
-
-        public static void Draw(GameTime time)
-        {
-            switch (state)
-            {
-                case State.intro:
-                    intro.Draw(time);
-                    break;
-                case State.info:
-                    GameInfoDraw(time);
-                    break;
-                case State.level:
-                    level.Draw(time);
-                    break;
-                case State.gemeover:
-                    GameoverDraw(time);
-                    break;
-            }
-            GamestateDraw(time);
-
-        }
-
         public static void GameoverDraw(GameTime time)
         {
             batch.Begin();
@@ -161,7 +218,6 @@ namespace yamiproject
                 state = State.level;
             }
         }
-
         private static void GameInfoDraw(GameTime time)
         {
             batch.Begin();
@@ -185,36 +241,45 @@ namespace yamiproject
 
         }
 
-        private static void GamestateDraw(GameTime time)
+        private static void EndingUpdate(GameTime time)
         {
-
+            videoPlayer.Play(myVideoFile);
+            delaytime--;
+            Console.WriteLine(delaytime);
+            if (delaytime<1)
+            {
+                intro.MusicStart();
+                state = State.intro;
+            }                
+        }
+        private static void EndingDraw(GameTime time)
+        {
             batch.Begin();
-            for (int i = 0; i < 3; i++)
+            graphics.Clear(Color.Black);
+            if (videoPlayer.State == MediaState.Playing)
             {
-                batch.DrawString(font, hud[i], hud_positions[i] * Globals.Scale,
-                    Color.White, 0, Vector2.Zero,
-                    Globals.Scale, SpriteEffects.None, 0f);
+              batch.Draw(videoPlayer.GetTexture(), new Rectangle(0, 0, Globals.Width(), Globals.Height()), Color.White);
             }
+            batch.End();
+        }
 
-            batch.DrawString(font, String.Format("{0:000000.}", Score.score), hud_positions[3] * Globals.Scale,
-                    Color.White, 0, Vector2.Zero,
-                    Globals.Scale, SpriteEffects.None, 0f);
-
-            String tmp = "x" + String.Format("{0:00.}", Score.coins);
-            batch.DrawString(font, tmp, hud_positions[4] * Globals.Scale,
-                    Color.White, 0, Vector2.Zero,
-                    Globals.Scale, SpriteEffects.None, 0f);
-            
-            tmp = world[0].ToString() + "-" + world[1].ToString();
-            batch.DrawString(font, tmp, hud_positions[5] * Globals.Scale,
-                    Color.White, 0, Vector2.Zero,
-                    Globals.Scale, SpriteEffects.None, 0f);
-
-            if (state == State.level)
+        private static void RickRollUpdate(GameTime time)
+        {
+            videoPlayer.Play(myVideoFile2);
+            delaytime--;
+            Console.WriteLine(delaytime);
+            if (delaytime < 1)
             {
-                batch.DrawString(font, String.Format("{0:000.}", mariotime), hud_positions[6] * Globals.Scale,
-                        Color.White, 0, Vector2.Zero,
-                        Globals.Scale, SpriteEffects.None, 0f);
+                GameOver();
+            }                
+        }
+        private static void RickRollDraw(GameTime time)
+        {
+            batch.Begin();
+            graphics.Clear(Color.Black);
+            if (videoPlayer.State == MediaState.Playing)
+            {
+                batch.Draw(videoPlayer.GetTexture(), new Rectangle(0, 0, Globals.Width(), Globals.Height()), Color.White);
             }
             batch.End();
         }
@@ -231,13 +296,19 @@ namespace yamiproject
             level = new Level(batch, manager, "1-1");
             SoundEffect tmp = manager.Load<SoundEffect>("sounds/gameover");
             gameover = tmp.CreateInstance();
+            tmp = manager.Load<SoundEffect>("sounds/cointoscore");
+            coinstoscoresound = tmp.CreateInstance();
+            coinstoscoresound.IsLooped = true;
+            videoPlayer = new VideoPlayer();
+            myVideoFile = manager.Load<Video>("videos/Ending");
+            myVideoFile2 = manager.Load<Video>("videos/Cat");
         }
 
         public static void StartNewGame(int select_choice)
         {
             if (select_choice == 0) // 1 Player Game
             {
-                mariotime = 105;//400
+                mariotime = 400;//400
                 Score.Reset();
                 state = State.info;
             }
@@ -252,20 +323,75 @@ namespace yamiproject
         {
             speedup = false;
             timeup = false;
+            timerstopped = false;
             passedtime = 0;
-            mariotime = 105;//400
+            mariotime = 400;//400
         }
 
         public static void GameOver()
         {
             Restart();
-            state = State.gemeover;
+            state = State.gameover;
+        }
+
+        public static void Ending()
+        {
+            Restart();
+            state = State.ending;
+        }
+
+        public static void RickRoll()
+        {
+            Restart();
+            state = State.rickroll;
         }
 
         public static void GameInfo()
         {
             Restart();
             state = State.info;
+        }
+
+        public static Map GetCurrentMap()
+        {
+            return level.GetCurrentMap();
+        }
+
+        public static Level GetCurrentLevel()
+        {
+            return level;
+        }
+        
+        public static void CoinsToScore()
+        {
+            coinstoscore = true;
+            delaytime = 500;
+            coinstoscoresound.Play();
+        }
+
+        public static void CoinsToScoreUpdate()
+        {
+            if (coinstoscore)
+            {
+                if (mariotime > 0)
+                {
+                    delaytime--;
+                    mariotime--;
+                    Score.AddScore(10);
+                }
+                else if (delaytime > 0)
+                {
+                    coinstoscoresound.Stop();
+                    delaytime--;
+                }
+                else
+                {
+                    coinstoscoresound.Stop();
+                    coinstoscore = false;
+                    delaytime = 1050;
+                    Ending();
+                }
+            }
         }
     }
 }

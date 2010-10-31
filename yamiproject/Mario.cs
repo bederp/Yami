@@ -27,6 +27,11 @@ namespace yamiproject
         public int timeofdeath = 0;
         public bool deathfall = false;
         public bool deathjump = true;
+        bool reachedend = false;
+        bool reacheddown = false;
+        bool jumpfromflagpole = false;
+        bool hideincastle = false;
+        public bool ducking = false;
 
         public enum Animation
         {
@@ -36,10 +41,13 @@ namespace yamiproject
             runright,
             jumpleft,
             jumpright,
-            sit,
-            slide,
+            duck,
+            slideright,
+            slideleft,
             swimleft,
             swimright,
+            frictionright,
+            frictionleft,
             die
         }
 
@@ -48,7 +56,9 @@ namespace yamiproject
             falling,
             standing,
             jump,
-            die
+            flagpole,
+            die, 
+            duck
         }
 
         public enum Size
@@ -123,10 +133,10 @@ namespace yamiproject
             animations.Add("jumpleft", anim);
             anim = new FrameAnimation(1, 16, 16, 66, 0);
             anim.FramesPerSecond = 20;
-            animations.Add("slideright", anim);
+            animations.Add("frictionright", anim);
             anim = new FrameAnimation(1, 16, 16, 66, 17);
             anim.FramesPerSecond = 20;
-            animations.Add("slideleft", anim);
+            animations.Add("frictionleft", anim);
             anim.FramesPerSecond = 20;
             anim = new FrameAnimation(1, 16, 16, 80 , 0);
             anim.FramesPerSecond = 20;
@@ -137,8 +147,10 @@ namespace yamiproject
             anim = new FrameAnimation(1, 16, 16, 0, 34);
             anim.FramesPerSecond = 20;
             animations.Add("die", anim);
-            //anim = new FrameAnimation(1, 33, 33, 33, 66);
-            //animations.Add("slide", anim);
+            anim = new FrameAnimation(1, 16, 16, 16, 34);
+            animations.Add("slideright", anim);
+            anim = new FrameAnimation(1, 16, 16, 32, 34);
+            animations.Add("slideleft", anim);
             //anim = new FrameAnimation(4, 33, 33, 66, 66);
             //animations.Add("swimright", anim);
             //anim = new FrameAnimation(4, 33, 33, 0, 99);
@@ -175,6 +187,60 @@ namespace yamiproject
             
 
             base.Update(time);
+        }
+
+        public void Flagpole(int maxx)
+        {
+                if (!reachedend)
+                {
+                    reachedend = true;
+                    position.X = maxx;
+                    movementx = 0f;
+                    movementy = 0f;
+                    curstate2 = State.flagpole;
+                    CurrentAnimationName = Animation.slideright.ToString();
+                    Gamestate.GetCurrentMap().StartFlag();
+                }
+
+                else
+                {
+                    if (!reacheddown)
+                    {
+                        if (position.Y < 169)
+                        {
+                            position.Y += 2;
+                        }
+                        else
+                        {
+                            position.Y = 169;
+                            reacheddown = true;
+                        }
+                    }
+                    else if (jumpfromflagpole)
+                    {
+                        CurrentAnimationName = Animation.runright.ToString();
+
+                        if (position.Y < 200 - 16)
+                            position.Y += 2;
+                        else
+                            position.Y = 200 - 16;
+
+                        if (position.X < 3265)
+                            position.X += 2;
+                        else if(visable == true)
+                        {
+                            visable = false;
+                            Gamestate.CoinsToScore();
+                        }
+                    }
+                    else if (!Gamestate.GetCurrentMap().flaggodown)
+                                        {
+                                            position.X += 16;
+                                            CurrentAnimationName = Animation.slideleft.ToString();
+                                            jumpfromflagpole = true;
+                                        }
+                }
+
         }
 
         public void Death(GameTime time)
@@ -224,6 +290,9 @@ namespace yamiproject
         {
             IsAnimating = true;
 
+            if (curstate2 == State.flagpole)
+                return;
+
             if (curstate2 == State.die)
             {
                 CurrentAnimationName = Animation.die.ToString();
@@ -257,7 +326,7 @@ namespace yamiproject
 
         private void KeyboardInput()
         {
-            if (curstate2 == State.die)
+            if (curstate2 == State.die  || curstate2 == State.flagpole)
                 return;
             KeyboardState key = Keyboard.GetState();
             turbo = false;
@@ -266,19 +335,19 @@ namespace yamiproject
                 if (key.IsKeyDown(Keys.D) == true)
                 {
                     turbo = true;
-                    Movementx += 0.2f;
+                    Movementx += 0.3f;
                 }
 
-                Movementx += 0.1f;
+                Movementx += 0.2f;
             }
             else if (key.IsKeyDown(Keys.Left) == true)
             {
                 if (key.IsKeyDown(Keys.D) == true)
                 {
                     turbo = true;
-                    Movementx -= 0.2f;
+                    Movementx -= 0.3f;
                 }
-                Movementx -= 0.1f;
+                Movementx -= 0.2f;
             }
             else
                 Frictionx();
@@ -289,6 +358,17 @@ namespace yamiproject
                     curstate2 = State.jump;
             }
 
+            if (key.IsKeyDown(Keys.Down) == true)
+            {
+                if (curstate2 == State.standing)
+                    ducking = true;
+            }
+            else
+                ducking = false;
+
+            Console.WriteLine(curstate2);
+            Console.WriteLine(position);
+            Console.WriteLine(ducking);
             prevkey = key;
         }
 
@@ -318,7 +398,7 @@ namespace yamiproject
 
         public void GroundTest()
         {
-            if(curstate2 == State.jump || curstate2 == State.die)
+            if(curstate2 == State.jump || curstate2 == State.duck || curstate2 == State.die || curstate2 == State.flagpole)
                 return;
             curstate2 = State.falling;
             int y1 = ((position.Y + Globals.yscanlineoffset + 16) / 16);
@@ -353,7 +433,7 @@ namespace yamiproject
 
         public void WallTest()
         {
-            if (Movementx == 0f)
+            if (Movementx == 0f || curstate2 == State.flagpole)
                 return;
 
             int y1 = ((position.Y + Globals.yscanlineoffset) / 16);
@@ -403,6 +483,27 @@ namespace yamiproject
                    beginjump = true;
                }
            }
+        }
+
+        public void Restart(Point start)
+        {
+            movementx = 0f;
+            movementy = 0f;
+            minx = 0;
+            curstate2 = Mario.State.falling;
+            orientation = true;
+            beginjump = true;
+            deathfall = false;
+            position = start;
+            timeofdeath = 0;
+            turbo = false;
+            beginjump = true;
+            reachedend = false;
+            reacheddown = false;
+            jumpfromflagpole = false;
+            hideincastle = false;
+            visable = true;
+            ducking = false;
         }
 
     }

@@ -1,5 +1,12 @@
 [START]
-40 20
+20 20
+
+[FLAG]
+3161 40
+
+[TELEPORTS]
+455 1 9 99 99
+920 1 1 40 40
 
 [SOUNDS]
 maintheme

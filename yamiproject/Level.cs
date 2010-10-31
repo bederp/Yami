@@ -62,5 +62,14 @@ namespace yamiproject
         {
             maps[currentmap].KillSound();
         }
+
+        public void SwitchMap(int number, Point pos)
+        {
+            Console.WriteLine("Switching map to{0}", number);
+            maps[currentmap].KillSound();
+            currentmap = number;
+            maps[currentmap].SetMarioPosition(pos);
+            maps[currentmap].StartSound();
+        }
     }
 }

@@ -1,8 +1,11 @@
 [START]
 40 40
 
+[TELEPORTS]
+191 2 0 2620 152
+
 [SOUNDS]
-maintheme
+underworld
 warning
 
 [BACKGROUND]

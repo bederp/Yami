@@ -8,7 +8,21 @@ namespace yamiproject
 {
    public class Globals
    {
+       public struct Teleport
+       {
+           public int x, type, where;
+           public Point mariopos;
 
+           public Teleport(int p1, int p2, int p3, Point tmp)
+           {
+               x = p1;
+               type = p2;
+               where = p3;
+               mariopos = tmp;
+           }
+       }
+
+       
        public static Point mario_res = new Point(256, 224);
        public static Point title = new Point(16, 16);
        public static int yscanlineoffset = 8;
@@ -38,6 +52,16 @@ namespace yamiproject
        public static int ConvertCellToX(int x)
        {
            return (x*16);
+       }
+
+       public static int Width()
+       {
+           return mario_res.X* scale;
+       }
+
+       public static int Height()
+       {
+           return mario_res.Y * scale;
        }
 
        public static int ConvertCellToY(int y)

@@ -42,7 +42,7 @@ namespace yamiproject
             graphics.PreferredBackBufferWidth = (int)Globals.mario_res.X*Globals.Scale;
             graphics.PreferredBackBufferHeight = (int)Globals.mario_res.Y*Globals.Scale;
             graphics.IsFullScreen = false;
-            Window.Title = "Yami 0.05";
+            Window.Title = "Yami 0.07";
             graphics.ApplyChanges();
 
             base.Initialize();

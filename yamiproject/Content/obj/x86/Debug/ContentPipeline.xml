@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\marios.xnb</Output>
-      <Time>2010-10-19T19:02:05.5025437+02:00</Time>
+      <Time>2010-10-20T19:57:29.799896+02:00</Time>
     </Item>
     <Item>
       <Source>images\welcome.png</Source>
@@ -71,7 +71,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\flag.xnb</Output>
-      <Time>2010-10-02T23:51:11.0230203+02:00</Time>
+      <Time>2010-10-20T18:50:38.8374821+02:00</Time>
     </Item>
     <Item>
       <Source>sounds\1up.wav</Source>
@@ -81,15 +81,6 @@
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\1up.xnb</Output>
       <Time>2010-10-11T21:39:33.5840113+02:00</Time>
-    </Item>
-    <Item>
-      <Source>sounds\castle.wav</Source>
-      <Name>sounds\castle</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\castle.xnb</Output>
-      <Time>2010-10-06T22:17:24.2598448+02:00</Time>
     </Item>
     <Item>
       <Source>sounds\coin.wav</Source>
@@ -270,6 +261,53 @@
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\warning.xnb</Output>
       <Time>2010-10-11T21:47:13.1052944+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\cointoscore.wav</Source>
+      <Name>sounds\cointoscore</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\cointoscore.xnb</Output>
+      <Time>2010-10-20T22:16:35.2312274+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\pipe.wav</Source>
+      <Name>sounds\pipe</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\pipe.xnb</Output>
+      <Time>2010-10-31T16:46:34.9993722+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\underworld.wav</Source>
+      <Name>sounds\underworld</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\underworld.xnb</Output>
+      <Time>2010-10-31T17:02:51.6492334+01:00</Time>
+    </Item>
+    <Item>
+      <Source>videos\Ending.wmv</Source>
+      <Name>videos\Ending</Name>
+      <Importer>WmvImporter</Importer>
+      <Processor>VideoProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\videos\Ending.xnb</Output>
+      <Extra>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\videos\Ending.wmv</Extra>
+      <Time>2010-10-31T19:13:49.9547028+01:00</Time>
+    </Item>
+    <Item>
+      <Source>videos\Cat.wmv</Source>
+      <Name>videos\Cat</Name>
+      <Importer>WmvImporter</Importer>
+      <Processor>VideoProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\videos\Cat.xnb</Output>
+      <Extra>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\videos\Cat.wmv</Extra>
+      <Time>2010-10-31T21:41:38.5419569+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

@@ -7,7 +7,6 @@ Content\images\select.xnb
 Content\images\mariohud.xnb
 Content\images\flag.xnb
 Content\sounds\1up.xnb
-Content\sounds\castle.xnb
 Content\sounds\coin.xnb
 Content\sounds\death.xnb
 Content\sounds\fireball.xnb
@@ -28,6 +27,13 @@ Content\sounds\bump.xnb
 Content\sounds\breakblock.xnb
 Content\sounds\powerupa.xnb
 Content\sounds\warning.xnb
+Content\sounds\cointoscore.xnb
+Content\sounds\pipe.xnb
+Content\sounds\underworld.xnb
+Content\videos\Ending.xnb
+Content\videos\Ending.wmv
+Content\videos\Cat.xnb
+Content\videos\Cat.wmv
 Content\images\welcome.png
 Content\images\select.png
 Content\images\mariohud.png
@@ -35,7 +41,6 @@ Content\images\flag.png
 Content\sprites\coin1.png
 Content\sprites\marios.png
 Content\sounds\1up.wav
-Content\sounds\castle.wav
 Content\sounds\coin.wav
 Content\sounds\death.wav
 Content\sounds\fireball.wav
