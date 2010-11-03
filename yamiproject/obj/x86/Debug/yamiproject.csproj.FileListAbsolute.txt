@@ -74,3 +74,4 @@ E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\videos\Ending.xnb
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\videos\Ending.wmv
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\videos\Cat.xnb
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\videos\Cat.wmv
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\goomba.xnb

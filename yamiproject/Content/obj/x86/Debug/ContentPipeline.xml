@@ -2,42 +2,6 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>fonts\font.spritefont</Source>
-      <Name>fonts\font</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\fonts\font.xnb</Output>
-      <Time>2010-09-30T14:05:37.7623676+02:00</Time>
-    </Item>
-    <Item>
-      <Source>fonts\font2.spritefont</Source>
-      <Name>fonts\font2</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\fonts\font2.xnb</Output>
-      <Time>2010-09-30T13:59:04.7118864+02:00</Time>
-    </Item>
-    <Item>
-      <Source>sprites\coin1.png</Source>
-      <Name>sprites\coin1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\coin1.xnb</Output>
-      <Time>2010-09-30T17:38:49.2169969+02:00</Time>
-    </Item>
-    <Item>
-      <Source>sprites\marios.png</Source>
-      <Name>sprites\marios</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\marios.xnb</Output>
-      <Time>2010-10-20T19:57:29.799896+02:00</Time>
-    </Item>
-    <Item>
       <Source>images\welcome.png</Source>
       <Name>images\welcome</Name>
       <Importer>TextureImporter</Importer>
@@ -72,6 +36,87 @@
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\images\flag.xnb</Output>
       <Time>2010-10-20T18:50:38.8374821+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\coin1.png</Source>
+      <Name>sprites\coin1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\coin1.xnb</Output>
+      <Time>2010-09-30T17:38:49.2169969+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\marios.png</Source>
+      <Name>sprites\marios</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\marios.xnb</Output>
+      <Time>2010-10-20T19:57:29.799896+02:00</Time>
+    </Item>
+    <Item>
+      <Source>worlds\1-1\bg1.png</Source>
+      <Name>worlds\1-1\bg1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\worlds\1-1\bg1.xnb</Output>
+      <Time>2010-10-06T23:12:28.7118486+02:00</Time>
+    </Item>
+    <Item>
+      <Source>worlds\1-1\bg2.png</Source>
+      <Name>worlds\1-1\bg2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\worlds\1-1\bg2.xnb</Output>
+      <Time>2010-10-02T23:59:41.4342141+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\box.png</Source>
+      <Name>sprites\box</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\box.xnb</Output>
+      <Time>2010-10-11T20:39:29.718882+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\brick.png</Source>
+      <Name>sprites\brick</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\brick.xnb</Output>
+      <Time>2010-10-11T23:01:34.7534861+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\goomba.png</Source>
+      <Name>sprites\goomba</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\goomba.xnb</Output>
+      <Time>2010-11-03T17:43:55.7467119+01:00</Time>
+    </Item>
+    <Item>
+      <Source>fonts\font.spritefont</Source>
+      <Name>fonts\font</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\fonts\font.xnb</Output>
+      <Time>2010-09-30T14:05:37.7623676+02:00</Time>
+    </Item>
+    <Item>
+      <Source>fonts\font2.spritefont</Source>
+      <Name>fonts\font2</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\fonts\font2.xnb</Output>
+      <Time>2010-09-30T13:59:04.7118864+02:00</Time>
     </Item>
     <Item>
       <Source>sounds\1up.wav</Source>
@@ -182,24 +227,6 @@
       <Time>2010-10-06T22:17:27.0810061+02:00</Time>
     </Item>
     <Item>
-      <Source>worlds\1-1\bg1.png</Source>
-      <Name>worlds\1-1\bg1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\worlds\1-1\bg1.xnb</Output>
-      <Time>2010-10-06T23:12:28.7118486+02:00</Time>
-    </Item>
-    <Item>
-      <Source>worlds\1-1\bg2.png</Source>
-      <Name>worlds\1-1\bg2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\worlds\1-1\bg2.xnb</Output>
-      <Time>2010-10-02T23:59:41.4342141+02:00</Time>
-    </Item>
-    <Item>
       <Source>sounds\maintheme.wav</Source>
       <Name>sounds\maintheme</Name>
       <Importer>WavImporter</Importer>
@@ -207,24 +234,6 @@
       <Options>None</Options>
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sounds\maintheme.xnb</Output>
       <Time>2010-10-11T18:01:54.4830734+02:00</Time>
-    </Item>
-    <Item>
-      <Source>sprites\box.png</Source>
-      <Name>sprites\box</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\box.xnb</Output>
-      <Time>2010-10-11T20:39:29.718882+02:00</Time>
-    </Item>
-    <Item>
-      <Source>sprites\brick.png</Source>
-      <Name>sprites\brick</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Debug\Content\sprites\brick.xnb</Output>
-      <Time>2010-10-11T23:01:34.7534861+02:00</Time>
     </Item>
     <Item>
       <Source>sounds\bump.wav</Source>

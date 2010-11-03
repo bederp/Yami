@@ -25,12 +25,10 @@ namespace yamiproject
         public bool orientation = true;
         public int minx = 0;
         public int timeofdeath = 0;
-        public bool deathfall = false;
         public bool deathjump = true;
         bool reachedend = false;
         bool reacheddown = false;
         bool jumpfromflagpole = false;
-        bool hideincastle = false;
         public bool ducking = false;
 
         public enum Animation
@@ -182,11 +180,36 @@ namespace yamiproject
             GroundTest();
             Jump();
             HeadTest();
-            //Console.WriteLine(curstate2);
-         
+            CollisionTest();
+            Console.WriteLine(curstate2);
+            Console.WriteLine(position);
+            Console.WriteLine(ducking);
             
 
             base.Update(time);
+        }
+
+        private void CollisionTest()
+        {
+            foreach (Sprite s in movableobjects)
+            {
+                Vector2 mariocenter = new Vector2(position.X+8, position.Y+8);
+                Vector2 spritecenter = new Vector2(s.position.X + 8, s.position.Y + 8);
+
+                if (Vector2.Distance(mariocenter, spritecenter) < 16)
+                {
+                    if(s is Goomba)
+                            if (!((Goomba)s).dead && curstate2 != State.die)
+                            {
+                                if (mariocenter.Y < spritecenter.Y)
+                                    s.Colission((int)curstate3);
+                                else
+                                    curstate2 = State.die;
+                            }
+                      
+                }
+
+            }
         }
 
         public void Flagpole(int maxx)
@@ -366,9 +389,7 @@ namespace yamiproject
             else
                 ducking = false;
 
-            Console.WriteLine(curstate2);
-            Console.WriteLine(position);
-            Console.WriteLine(ducking);
+
             prevkey = key;
         }
 
@@ -467,9 +488,9 @@ namespace yamiproject
             if (curstate2 != State.jump)
                 return;
 
-           int x1 = position.X+4;
-           int x2 = x1 + 8;
-           int y1 = position.Y;
+           int x1 = position.X+6;
+           int x2 = x1 + 4;
+           int y1 = position.Y-1;
 
            foreach (Sprite s in staticobjects)
            {
@@ -493,7 +514,6 @@ namespace yamiproject
             curstate2 = Mario.State.falling;
             orientation = true;
             beginjump = true;
-            deathfall = false;
             position = start;
             timeofdeath = 0;
             turbo = false;
@@ -501,9 +521,9 @@ namespace yamiproject
             reachedend = false;
             reacheddown = false;
             jumpfromflagpole = false;
-            hideincastle = false;
             visable = true;
             ducking = false;
+            deathjump = true;
         }
 
     }

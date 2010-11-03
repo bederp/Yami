@@ -183,6 +183,11 @@ namespace yamiproject
                                     Brick tmp3 = new Brick(batch, manager, tmp.GetCellIndex(x, y), new Point(Globals.ConvertCellToX(x), Globals.ConvertCellToY(y)));
                                     staticobjects.Add(tmp3);
                                 }
+                                else if (tmp.GetCellIndex(x, y) == 7)
+                                {
+                                    Goomba tmp3 = new Goomba(batch, manager, colission, tmp.GetCellIndex(x, y), new Point(Globals.ConvertCellToX(x), Globals.ConvertCellToY(y)));
+                                    moveableobjects.Add(tmp3);
+                                }
 
                             }
                         }
@@ -221,8 +226,23 @@ namespace yamiproject
                 mario.CurrentAnimation.CurrentRect.Height - 112);
 
             mario.minx = (int)camera.Camerapos.X;
+            
             foreach (Sprite s in staticobjects)
             {
+                s.Update(time);
+            }
+            
+            foreach (Sprite s in moveableobjects)
+            {
+                if (camera.camerapos.X + Globals.mario_res.X >= s.position.X && camera.camerapos.X <= s.position.X)
+                {
+                    if (s is Goomba)
+                        ((Goomba)s).state = Goomba.State.walk;
+                }
+                else if(camera.camerapos.X > s.position.X)
+                    if (s is Goomba)
+                        ((Goomba)s).state = Goomba.State.dead;
+                    
                 s.Update(time);
             }
 
@@ -307,6 +327,11 @@ namespace yamiproject
                 s.Draw(time);
             }
 
+            foreach (Sprite s in moveableobjects)
+            {
+                s.Draw(time);
+            }
+
 
             mario.Draw(time);
             
@@ -334,6 +359,11 @@ namespace yamiproject
             sounds[0].Play();
 
             foreach (Sprite s in staticobjects)
+            {
+                s.Restart();
+            }
+
+            foreach (Sprite s in moveableobjects)
             {
                 s.Restart();
             }

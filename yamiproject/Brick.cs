@@ -30,7 +30,7 @@ namespace yamiproject
             : base(batch, manager, "sprites/brick")
         {
             FrameAnimation anim = new FrameAnimation(1, 16, 16, 0, 0);
-            anim.FramesPerSecond = 15;
+            anim.FramesPerSecond = 6;
             animations.Add("brick", anim);
 
             CurrentAnimationName = "brick";

@@ -34,6 +34,7 @@ Content\videos\Ending.xnb
 Content\videos\Ending.wmv
 Content\videos\Cat.xnb
 Content\videos\Cat.wmv
+Content\sprites\goomba.xnb
 Content\images\welcome.png
 Content\images\select.png
 Content\images\mariohud.png

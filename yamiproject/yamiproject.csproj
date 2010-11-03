@@ -92,6 +92,7 @@
     <Compile Include="FrameAnimation.cs" />
     <Compile Include="Gamestate.cs" />
     <Compile Include="Globals.cs" />
+    <Compile Include="Goomba.cs" />
     <Compile Include="Intro.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Map.cs" />

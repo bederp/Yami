@@ -309,6 +309,15 @@
       <Extra>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\videos\Cat.wmv</Extra>
       <Time>2010-10-31T21:41:38.5419569+01:00</Time>
     </Item>
+    <Item>
+      <Source>sprites\goomba.png</Source>
+      <Name>sprites\goomba</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sprites\goomba.xnb</Output>
+      <Time>2010-11-03T17:43:55.7467119+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
