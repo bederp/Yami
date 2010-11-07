@@ -13,7 +13,6 @@ namespace yamiproject
     {
         int type = 7; // Goomba
         public bool dead = false;
-        int countdown = 10;
         double movementx = -1;
         double movementy = 0;
         Point oldpos;
@@ -53,6 +52,8 @@ namespace yamiproject
 
         public override void Update(GameTime time)
         {
+            if (!visable)
+                return;
             WallTest();
             GroundTest();
 
@@ -75,26 +76,18 @@ namespace yamiproject
 
         public override void Colission(int size)
         {
-            if (size == 0)
-            {
                 sound1.Play();
                 dead = true;
                 state = State.stomp;
                 CurrentAnimationName = "stomp";
-            }
-
-            if (size == 1)
-            {
-                
-            }
         }
 
         public override void Restart()
         {
-            countdown = 10;
             visable = true;
             IsAnimating = true;
             dead = false;
+            movementx = -1;
             state = State.stop;
             position = oldpos;
             CurrentAnimationName = "walk";

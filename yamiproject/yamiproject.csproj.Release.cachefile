@@ -33,6 +33,11 @@ Content\sounds\underworld.xnb
 Content\videos\Ending.xnb
 Content\videos\Cat.xnb
 Content\sprites\goomba.xnb
+Content\sprites\coin2.xnb
+Content\sprites\powerups.xnb
+Content\sounds\powerup.xnb
+Content\sounds\starman10.xnb
+Content\sprites\mariob.xnb
 Content\videos\Ending.wmv
 Content\videos\Cat.wmv
 Content\images\welcome.png
@@ -62,10 +67,15 @@ Content\sounds\bump.wav
 Content\sounds\breakblock.wav
 Content\sounds\powerupa.wav
 Content\sounds\warning.wav
+Content\sprites\coin2.png
+Content\sprites\powerups.png
+Content\sounds\starman10.wav
+Content\sprites\mariob.png
 Content\worlds\1-1\col1.txt
 Content\worlds\1-1\def.txt
 Content\worlds\1-1\map1.txt
 Content\worlds\1-1\map2.txt
 Content\worlds\1-1\col2.txt
 Content\worlds\1-1\obj1.txt
+Content\worlds\1-1\obj2.txt
 Game.ico

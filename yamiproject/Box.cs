@@ -17,6 +17,9 @@ namespace yamiproject
         bool usedup = false;
         Point oldpos;
 
+        SpriteBatch batch;
+        ContentManager manager;
+
         public enum State
         {
             stop,
@@ -39,6 +42,9 @@ namespace yamiproject
 
             CurrentAnimationName = "box1";
             this.position = position;
+
+            this.batch = batch;
+            this.manager = manager;
 
             SoundEffect tmp;
             if (type == 1)
@@ -103,7 +109,22 @@ namespace yamiproject
                 if (type == 1)
                 {
                     Score.AddCoin();
+
                     Score.AddScore(200);
+                }
+                else if (type == 2)
+                {
+                    if (size ==  0)
+                    {
+                        Powerup tmp3 = new Powerup(
+                            batch,
+                            manager,
+                            Gamestate.GetCurrentMap().colission,
+                            1,
+                            position);
+
+                        Gamestate.GetCurrentMap().moveableobjects.Add(tmp3);
+                    }
                 }
                 sound1.Play();
                 state = State.jump;

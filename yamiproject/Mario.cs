@@ -30,6 +30,12 @@ namespace yamiproject
         bool reacheddown = false;
         bool jumpfromflagpole = false;
         public bool ducking = false;
+        bool invincible = false;
+        int invincibletime = 0;
+        int feetoffset = 16;
+        int rightoffset = 16;
+        int flagpole1 = 169;
+        Point centeroffset = new Point(8, 8);
 
         public enum Animation
         {
@@ -63,8 +69,7 @@ namespace yamiproject
         {
             small,
             big,
-            flover,
-            invincible
+            fire,
         }
 
         Animation curstate = Animation.stopright;
@@ -172,6 +177,7 @@ namespace yamiproject
 
         public override void Update(GameTime time)
         {
+            Invincible();
             Death(time);
             KeyboardInput();  
             Move();
@@ -189,26 +195,186 @@ namespace yamiproject
             base.Update(time);
         }
 
+        private void Invincible()
+        {
+            if (invincibletime > 0)
+            {
+                invincibletime--;
+
+            }
+            else
+                invincible = false;
+        }
+
         private void CollisionTest()
         {
             foreach (Sprite s in movableobjects)
             {
-                Vector2 mariocenter = new Vector2(position.X+8, position.Y+8);
-                Vector2 spritecenter = new Vector2(s.position.X + 8, s.position.Y + 8);
 
-                if (Vector2.Distance(mariocenter, spritecenter) < 16)
+                Vector2 mariocenter1 = new Vector2(position.X+8, position.Y+8);
+                Vector2 mariocenter2 = new Vector2(position.X+8, position.Y+24);
+                Vector2 spritecenter = new Vector2(s.position.X + 8, s.position.Y + 8);
+                bool colided = false;
+
+                if (curstate3 == Size.small)
                 {
-                    if(s is Goomba)
-                            if (!((Goomba)s).dead && curstate2 != State.die)
+                    if (Vector2.Distance(mariocenter1, spritecenter) < 16)
+                        colided = true;
+                }
+                else
+                    if (Vector2.Distance(mariocenter1, spritecenter) < 16 || Vector2.Distance(mariocenter2, spritecenter) < 16)
+                        colided = true;
+
+                if (colided == true)
+                    {
+                        if (s is Goomba)
+                        {
+                            Goomba tmp = s as Goomba;
+                            if (!tmp.dead && curstate2 != State.die)
                             {
-                                if (mariocenter.Y < spritecenter.Y)
+                                if (position.Y + feetoffset < s.position.Y + 16)
+                                {
+                                    movementy = -2.0f;
                                     s.Colission((int)curstate3);
+                                }
+                                else if (invincible == true)
+                                {
+
+                                }
+                                else if (!(curstate3 == Size.small))
+                                {
+                                    SetSize(Size.small);
+                                    invincibletime = 60 * 4;
+                                    invincible = true;
+                                }
                                 else
                                     curstate2 = State.die;
                             }
-                      
-                }
+                        }
+                        else if (s is Coin)
+                        {
+                            Coin tmp = s as Coin;
+                            if (tmp.visable && curstate2 != State.die)
+                            {
+                                s.Colission((int)curstate3);
+                            }
+                        }
 
+                        else if (s is Powerup)
+                        {
+                            Powerup tmp = s as Powerup;
+                            if (tmp.visable && curstate2 != State.die)
+                            {
+                                s.Colission((int)curstate3);
+                                Powerup();
+                            }
+                        }
+                    }
+            }
+        }
+
+        private void Powerup()
+        {
+            if (curstate3 == Size.small)
+            {
+                SetSize(Size.big);
+            }
+            else if (curstate3 == Size.big)
+            {
+                SetSize(Size.fire);
+            }
+            else if (curstate3 == Size.fire)
+            {
+                Score.AddScore(1000);
+            }
+
+        }
+
+        public void SetSize(Mario.Size size)
+        {
+            if (size == Size.small)
+            {
+                position.Y += 16;
+                feetoffset = 16;
+                flagpole1 = 169;
+                centeroffset = new Point(8, 8);
+                curstate3 = Size.small;
+                ReloadTexture("marios");
+                animations.Clear();
+                FrameAnimation anim = new FrameAnimation(3, 15, 16, 0, 0);
+                anim.FramesPerSecond = 20;
+                animations.Add("runright", anim);
+                anim = new FrameAnimation(3, 15, 16, 0, 17);
+                anim.FramesPerSecond = 20;
+                animations.Add("runleft", anim);
+                anim = new FrameAnimation(1, 16, 16, 48, 0);
+                anim.FramesPerSecond = 20;
+                animations.Add("jumpright", anim);
+                anim = new FrameAnimation(1, 16, 16, 48, 17);
+                anim.FramesPerSecond = 20;
+                animations.Add("jumpleft", anim);
+                anim = new FrameAnimation(1, 16, 16, 66, 0);
+                anim.FramesPerSecond = 20;
+                animations.Add("frictionright", anim);
+                anim = new FrameAnimation(1, 16, 16, 66, 17);
+                anim.FramesPerSecond = 20;
+                animations.Add("frictionleft", anim);
+                anim.FramesPerSecond = 20;
+                anim = new FrameAnimation(1, 16, 16, 80, 0);
+                anim.FramesPerSecond = 20;
+                animations.Add("stopright", anim);
+                anim = new FrameAnimation(1, 16, 16, 80, 17);
+                anim.FramesPerSecond = 20;
+                animations.Add("stopleft", anim);
+                anim = new FrameAnimation(1, 16, 16, 0, 34);
+                anim.FramesPerSecond = 20;
+                animations.Add("die", anim);
+                anim = new FrameAnimation(1, 16, 16, 16, 34);
+                animations.Add("slideright", anim);
+                anim = new FrameAnimation(1, 16, 16, 32, 34);
+                animations.Add("slideleft", anim);
+            }
+            else if (size == Size.big)
+            {
+                position.Y -= 16;
+                feetoffset = 32;
+                flagpole1 = 169-16;
+                centeroffset = new Point(8, 16);
+                curstate3 = Size.big;
+                ReloadTexture("mariob");
+                animations.Clear();
+                FrameAnimation anim = new FrameAnimation(3, 16, 32, 0, 0);
+                anim.FramesPerSecond = 20;
+                animations.Add("runright", anim);
+                anim = new FrameAnimation(3, 16, 32, 0, 32);
+                anim.FramesPerSecond = 20;
+                animations.Add("runleft", anim);
+                anim = new FrameAnimation(1, 16, 32, 48, 0);
+                anim.FramesPerSecond = 20;
+                animations.Add("jumpright", anim);
+                anim = new FrameAnimation(1, 16, 32, 48, 32);
+                anim.FramesPerSecond = 20;
+                animations.Add("jumpleft", anim);
+                anim = new FrameAnimation(1, 16, 32, 64, 0);
+                anim.FramesPerSecond = 20;
+                animations.Add("frictionright", anim);
+                anim = new FrameAnimation(1, 16, 32, 64, 32);
+                anim.FramesPerSecond = 20;
+                animations.Add("frictionleft", anim);
+                anim.FramesPerSecond = 20;
+                anim = new FrameAnimation(1, 16, 32, 80, 0);
+                anim.FramesPerSecond = 20;
+                animations.Add("stopright", anim);
+                anim = new FrameAnimation(1, 16, 32, 80, 32);
+                anim.FramesPerSecond = 20;
+                animations.Add("stopleft", anim);
+                anim = new FrameAnimation(1, 16, 32, 0, 64);
+                anim.FramesPerSecond = 20;
+                animations.Add("duck", anim);
+                anim = new FrameAnimation(1, 16, 32, 16, 64);
+                animations.Add("slideright", anim);
+                anim = new FrameAnimation(1, 16, 32, 32, 64);
+                animations.Add("slideleft", anim);
             }
         }
 
@@ -229,13 +395,13 @@ namespace yamiproject
                 {
                     if (!reacheddown)
                     {
-                        if (position.Y < 169)
+                        if (position.Y < flagpole1)
                         {
                             position.Y += 2;
                         }
                         else
                         {
-                            position.Y = 169;
+                            position.Y = flagpole1;
                             reacheddown = true;
                         }
                     }
@@ -243,10 +409,10 @@ namespace yamiproject
                     {
                         CurrentAnimationName = Animation.runright.ToString();
 
-                        if (position.Y < 200 - 16)
+                        if (position.Y < 200 - feetoffset)
                             position.Y += 2;
                         else
-                            position.Y = 200 - 16;
+                            position.Y = 200 - feetoffset;
 
                         if (position.X < 3265)
                             position.X += 2;
@@ -276,7 +442,7 @@ namespace yamiproject
             timeofdeath += time.ElapsedGameTime.Milliseconds;
 
             int y1 = ((position.Y + Globals.yscanlineoffset + 16) / 16);
-            if (y1 < 16)
+            if (y1 < 17)
             {
                 if (deathjump)
                 {
@@ -292,6 +458,7 @@ namespace yamiproject
             if (timeofdeath > 2500)
             {
                 Score.Death();
+                SetSize(Size.small);
                 if (Score.lives > 0)
                     Gamestate.GameInfo();
                 else
@@ -319,6 +486,10 @@ namespace yamiproject
             if (curstate2 == State.die)
             {
                 CurrentAnimationName = Animation.die.ToString();
+            }
+            else if (ducking == true && !(curstate3 == Size.small))
+            {
+                CurrentAnimationName = Animation.duck.ToString();
             }
             else if (curstate2 == State.jump)
             {
@@ -353,7 +524,11 @@ namespace yamiproject
                 return;
             KeyboardState key = Keyboard.GetState();
             turbo = false;
-            if (key.IsKeyDown(Keys.Right) == true)
+            if (!(curstate3 == Size.small) && ducking == true)
+            {
+                Frictionx();
+            }
+            else if (key.IsKeyDown(Keys.Right) == true)
             {
                 if (key.IsKeyDown(Keys.D) == true)
                 {
@@ -422,7 +597,7 @@ namespace yamiproject
             if(curstate2 == State.jump || curstate2 == State.duck || curstate2 == State.die || curstate2 == State.flagpole)
                 return;
             curstate2 = State.falling;
-            int y1 = ((position.Y + Globals.yscanlineoffset + 16) / 16);
+            int y1 = ((position.Y + Globals.yscanlineoffset + feetoffset) / 16);
             if (y1 > 13)
             {
                 if (y1 > 15)
@@ -443,7 +618,7 @@ namespace yamiproject
             if (curstate2 == State.standing)
             {
                 movementy = 0f;
-                position.Y = (y1 * 16) - 16 - Globals.yscanlineoffset;
+                position.Y = (y1 * 16) - feetoffset - Globals.yscanlineoffset;
             }
             else
                 movementy += 0.5f;
@@ -458,25 +633,25 @@ namespace yamiproject
                 return;
 
             int y1 = ((position.Y + Globals.yscanlineoffset) / 16);
-            int y2 = ((position.Y + Globals.yscanlineoffset + 16) / 16);
-            if (y2 >= 14)
+            int y2 = ((position.Y + Globals.yscanlineoffset + feetoffset/2) / 16);
+            if (y2 >= 14 || y1 <0)
                 return;
             int x1 = position.X/16;
-            int x2 = (position.X + 16)/16;
+            int x2 = (position.X + rightoffset)/16;
 
             if (Movementx > 0f)
             {
-                if (colission.GetCellIndex(x2, y1) == 1)
+                if (colission.GetCellIndex(x2, y1) == 1 || colission.GetCellIndex(x2, y2) == 1)
                 {
-                    position.X = (x2 * 16 - 16);
+                    position.X = (x2 * 16 - rightoffset);
                     Movementx = 0f;
                 }      
             }
             else if (Movementx < 0f)
             {
-                if (colission.GetCellIndex(x1, y1) == 1)
+                if (colission.GetCellIndex(x1, y1) == 1 || colission.GetCellIndex(x1, y2) == 1)
                 {
-                    position.X = (x1 * 16 + 16);
+                    position.X = (x1 * 16 + rightoffset);
                     Movementx = 0f;
                 }
             }
@@ -488,14 +663,12 @@ namespace yamiproject
             if (curstate2 != State.jump)
                 return;
 
-           int x1 = position.X+6;
-           int x2 = x1 + 4;
+           int x1 = position.X+centeroffset.X;
            int y1 = position.Y-1;
 
            foreach (Sprite s in staticobjects)
            {
-               if((Globals.ConvertPositionToCell(s.position) == Globals.ConvertPositionToCell(new Point(x1, y1))) || 
-                   Globals.ConvertPositionToCell(s.position) == Globals.ConvertPositionToCell(new Point(x2, y1)))
+               if((Globals.ConvertPositionToCell(s.position) == Globals.ConvertPositionToCell(new Point(x1, y1))))
                {
                    s.Colission((int)curstate3);
                    sounds[0].Stop();

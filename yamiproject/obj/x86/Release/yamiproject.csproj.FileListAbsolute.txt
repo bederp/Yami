@@ -75,3 +75,13 @@ E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\videos\Cat.xnb
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\videos\Ending.wmv
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\videos\Cat.wmv
 E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sprites\goomba.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sprites\coin2.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sprites\coin2.png
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\worlds\1-1\obj2.txt
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sprites\powerups.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sprites\powerups.png
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sounds\powerup.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sounds\starman10.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sounds\starman10.wav
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sprites\mariob.xnb
+E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sprites\mariob.png

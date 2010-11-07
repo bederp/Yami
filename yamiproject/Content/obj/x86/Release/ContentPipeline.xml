@@ -318,6 +318,51 @@
       <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sprites\goomba.xnb</Output>
       <Time>2010-11-03T17:43:55.7467119+01:00</Time>
     </Item>
+    <Item>
+      <Source>sprites\coin2.png</Source>
+      <Name>sprites\coin2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sprites\coin2.xnb</Output>
+      <Time>2010-11-06T14:58:45.847876+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\powerups.png</Source>
+      <Name>sprites\powerups</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sprites\powerups.xnb</Output>
+      <Time>2010-11-06T15:57:02.7528876+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\powerup.wav</Source>
+      <Name>sounds\powerup</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sounds\powerup.xnb</Output>
+      <Time>2010-10-11T21:42:29.3720658+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\starman10.wav</Source>
+      <Name>sounds\starman10</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sounds\starman10.xnb</Output>
+      <Time>2010-11-06T20:20:32.3461446+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\mariob.png</Source>
+      <Name>sprites\mariob</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\yami.net.pl\yamiproject\yamiproject\bin\x86\Release\Content\sprites\mariob.xnb</Output>
+      <Time>2010-11-07T15:04:39.0598759+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

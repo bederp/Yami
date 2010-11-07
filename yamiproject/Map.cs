@@ -22,14 +22,14 @@ namespace yamiproject
         Camera camera;
         List<Globals.Teleport> teleports;
         List<SoundEffectInstance> sounds;
-        List<Sprite> staticobjects;
-        List<Sprite> moveableobjects;
-        Mario mario;
+        public List<Sprite> staticobjects;
+        public List<Sprite> moveableobjects;
+        public Mario mario;
         Point flagposition;
         Point flagpositionbackup;
         bool flagexists = false;
         public bool flaggodown = false;
-        ColissionLayer colission;
+        public ColissionLayer colission;
 
         public Map(SpriteBatch batch, ContentManager manager, string world, string filename)
         {
@@ -188,6 +188,12 @@ namespace yamiproject
                                     Goomba tmp3 = new Goomba(batch, manager, colission, tmp.GetCellIndex(x, y), new Point(Globals.ConvertCellToX(x), Globals.ConvertCellToY(y)));
                                     moveableobjects.Add(tmp3);
                                 }
+                                else if (tmp.GetCellIndex(x, y) == 8)
+                                {
+                                    Coin tmp3 = new Coin(batch, manager, tmp.GetCellIndex(x, y), new Point(Globals.ConvertCellToX(x), Globals.ConvertCellToY(y)));
+                                    moveableobjects.Add(tmp3);
+                                }
+
 
                             }
                         }
@@ -231,7 +237,7 @@ namespace yamiproject
             {
                 s.Update(time);
             }
-            
+
             foreach (Sprite s in moveableobjects)
             {
                 if (camera.camerapos.X + Globals.mario_res.X >= s.position.X && camera.camerapos.X <= s.position.X)
@@ -239,9 +245,13 @@ namespace yamiproject
                     if (s is Goomba)
                         ((Goomba)s).state = Goomba.State.walk;
                 }
-                else if(camera.camerapos.X > s.position.X)
+                else if (camera.camerapos.X > s.position.X + Globals.title.X)
+                {
                     if (s is Goomba)
                         ((Goomba)s).state = Goomba.State.dead;
+                    else if (s is Powerup)
+                        ((Powerup)s).state = Powerup.State.dead;
+                }
                     
                 s.Update(time);
             }
@@ -289,7 +299,7 @@ namespace yamiproject
                             Console.WriteLine("On teleport to map{0}", s.where);
                             SoundEffect tmp = manager.Load<SoundEffect>("sounds/pipe");
                             tmp.Play();
-                            Gamestate.GetCurrentLevel().SwitchMap(s.where, s.mariopos);
+                            Gamestate.GetCurrentLevel().SwitchMap(s.where, s.mariopos, mario.curstate3);
                         }
                     }
                 }
@@ -303,7 +313,7 @@ namespace yamiproject
                             Console.WriteLine("On teleport to map{0}", s.where);
                             SoundEffect tmp = manager.Load<SoundEffect>("sounds/pipe");
                             tmp.Play();
-                            Gamestate.GetCurrentLevel().SwitchMap(s.where, s.mariopos);
+                            Gamestate.GetCurrentLevel().SwitchMap(s.where, s.mariopos, mario.curstate3);
                         }
                     }
                 }
@@ -322,12 +332,12 @@ namespace yamiproject
             if(flagexists)
                 batch.Draw(flag, new Vector2(flagposition.X, flagposition.Y), Color.White);
 
-            foreach (Sprite s in staticobjects)
+            foreach (Sprite s in moveableobjects)
             {
                 s.Draw(time);
             }
 
-            foreach (Sprite s in moveableobjects)
+            foreach (Sprite s in staticobjects)
             {
                 s.Draw(time);
             }

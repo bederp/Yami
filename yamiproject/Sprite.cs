@@ -83,6 +83,12 @@ namespace yamiproject
                     Color.White);
             }
         }
+
+        public void ReloadTexture(string texturename)
+        {
+            this.texture = manager.Load<Texture2D>("sprites/"+texturename);
+        }
+
         public virtual void Colission(int size)
         {
         }

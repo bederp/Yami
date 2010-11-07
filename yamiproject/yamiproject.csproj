@@ -89,6 +89,7 @@
     <Compile Include="Box.cs" />
     <Compile Include="Brick.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="Coin.cs" />
     <Compile Include="FrameAnimation.cs" />
     <Compile Include="Gamestate.cs" />
     <Compile Include="Globals.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Map.cs" />
     <Compile Include="Mario.cs" />
     <Compile Include="ColissionLayer.cs" />
+    <Compile Include="Powerup.cs" />
     <Compile Include="ObjectsLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
